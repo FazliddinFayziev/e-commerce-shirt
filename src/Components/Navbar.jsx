@@ -1,8 +1,10 @@
 import React from 'react';
 import { TiThMenu } from "react-icons/ti";
 import { AiOutlineSearch, AiOutlineShopping } from "react-icons/ai";
+import { useGlobalContext } from '../Context/context';
 
 const Navbar = () => {
+    const { nav, setNav } = useGlobalContext();
     return (
         <>
             <div className='navbar-container'>
