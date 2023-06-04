@@ -1,0 +1,28 @@
+:root {
+    --font-w: 800;
+    --blue: #7FC0FC;
+}
+
+.blog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--font-w);
+    margin-top: 30px;
+}
+
+.blog h2 {
+    position: relative;
+    display: inline-block;
+    color: #8a8a8a;
+}
+
+.blog h2:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--blue);
+}

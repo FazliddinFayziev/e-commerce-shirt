@@ -1,0 +1,9 @@
+export { default as Blog } from "./Blog";
+export { default as Navbar } from "./Navbar";
+export { default as Footer } from "./Footer";
+export { default as Slider } from "./Slider";
+export { default as LogoTitle } from "./LogoTitle";
+export { default as HerroBanner } from "./HerroBanner";
+export { default as MostPoppular } from "./MostPopular";
+export { default as PopularElegant } from "./PopularElegant";
+export { default as HumbleProducts } from "./HumbleProducts";

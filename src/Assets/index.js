@@ -1,0 +1,1 @@
+export const small_js = "https://res.cloudinary.com/djijmzccq/image/upload/v1685798280/small-js_ruslcz.png";

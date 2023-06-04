@@ -1,0 +1,113 @@
+:root {
+    --font-w: 800;
+    --blue: #7FC0FC;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-box {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 80px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #000;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav:hover {
+    width: 50px;
+    height: 50px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.search:hover {
+    font-size: 30px;
+}
+
+.account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--font-w);
+    width: 60px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.account p:hover {
+    color: var(--blue);
+    transition: color 0.3s ease-in-out;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.count-product {
+    position: absolute;
+    z-index: 2;
+    top: 20%;
+    left: 75%;
+    background-color: var(--blue);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    width: 25px;
+    height: 25px;
+}
+
+@media screen and (max-width: 950px) {
+    .navbar-box {
+        width: 130px;
+        height: 80px;
+    }
+
+    .nav {
+        width: 35px;
+        height: 35px;
+    }
+
+    .search {
+        width: 35px;
+        height: 35px;
+    }
+}
