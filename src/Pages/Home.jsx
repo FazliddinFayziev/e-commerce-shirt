@@ -33,16 +33,29 @@ const Home = () => {
         AOS.init();
     }, [])
 
+    useEffect(() => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    }, [])
+
     return (
         <>
             <Navbar />
             <LogoTitle />
             <HerroBanner />
-            <Routes>
-                <Route path='/' element={<MostPoppular />} />
-                <Route path='/humble' element={<HumbleProducts />} />
-                <Route path='/elegant' element={<PopularElegant />} />
-            </Routes>
+            <div id='popular' className='products'>
+                <Routes>
+                    <Route path='/' element={<MostPoppular />} />
+                    <Route path='/humble' element={<HumbleProducts />} />
+                    <Route path='/elegant' element={<PopularElegant />} />
+                </Routes>
+            </div>
             <Blog />
             <Footer />
         </>

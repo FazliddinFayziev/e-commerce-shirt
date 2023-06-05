@@ -4,7 +4,8 @@ import { popular } from '../Data/data'
 const MostPopular = () => {
     return (
         <>
-            <div className='popular'>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='popular'>
                 <h2>Most Popular</h2>
             </div>
             <div className='popular-cards'>
@@ -19,7 +20,8 @@ const MostPopular = () => {
                     )
                 })}
             </div>
-            <div className='button'>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='button'>
                 <button>View All</button>
             </div>
         </>

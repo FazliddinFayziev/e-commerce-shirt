@@ -1,16 +1,17 @@
 import React from 'react';
 import { BsInstagram } from "react-icons/bs"
 import { data } from "../Data/data";
-// import { useParallax } from 'react-scroll-parallax';
 
 const Blog = () => {
     return (
         <>
-            <div className='blog'>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='blog'>
                 <h2>Our Blog</h2>
             </div>
             <div className='instagram'>
-                <div>
+                <div id='blog' data-aos="fade-right" data-aos-easing="linear"
+                    data-aos-duration="1000">
                     <div className='instagram-icon'>
                         <BsInstagram fontSize={40} />
                     </div>
@@ -23,7 +24,8 @@ const Blog = () => {
                     {data.map((picture) => {
                         const { id, img } = picture;
                         return (
-                            <div key={id} className='instagram-box'>
+                            <div data-aos="fade-right" data-aos-easing="linear"
+                                data-aos-duration="1000" key={id} className='instagram-box'>
                                 <div className='insta-img'>
                                     <img src={img} alt="intagram-pictures" />
                                 </div>
@@ -32,6 +34,10 @@ const Blog = () => {
                         )
                     })}
                 </div>
+            </div>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='follow-button'>
+                <button>Follow</button>
             </div>
         </>
     )

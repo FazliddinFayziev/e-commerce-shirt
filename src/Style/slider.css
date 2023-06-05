@@ -131,6 +131,27 @@
     text-decoration: none;
 }
 
+.fixed-card {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 80%;
+    left: 2%;
+    background-color: #c3e5fe;
+    color: #454545;
+    width: 60px;
+    height: 60px;
+    background: #7fc0fc65;
+    box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 950px) {
     .slide-text {
         font-size: 10vh;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GiShoppingBag } from "react-icons/gi";
 
 const Slider = () => {
 
@@ -73,49 +74,58 @@ const Slider = () => {
 
     return (
 
-        // Slider
+        <>
 
-        <div className="slider">
+            {/* Slider */}
 
-            {/* Shop */}
+            <div className="slider">
 
-            <div data-aos="fade-up" data-aos-easing="linear"
-                data-aos-duration="1000" className='shop'>
-                <h1>Shop</h1>
-                <div className='line'></div>
-                <SliderCategories currentSlide={currentSlide} />
+                {/* Shop */}
+
+                <div data-aos="fade-up" data-aos-easing="linear"
+                    data-aos-duration="1000" className='shop'>
+                    <h1>Shop</h1>
+                    <div className='line'></div>
+                    <SliderCategories currentSlide={currentSlide} />
+                </div>
+
+                {/* Limited */}
+
+                <div data-aos="fade-up" data-aos-easing="linear"
+                    data-aos-duration="1000" className='limited'>
+                    <h3>{slidesData[currentSlide].number}</h3>
+                    <p className='edition'>Limited edition</p>
+                    <p className='programming-shirt'>Programming Shirt</p>
+                </div>
+
+                {/* Show Now Button */}
+
+                <div data-aos="fade-left" data-aos-easing="linear"
+                    data-aos-duration="1000" className='shop-now-button'>
+                    <button>Shop Now</button>
+                </div>
+
+                {/* Slide Logic */}
+
+                <div data-aos="fade-right" data-aos-easing="linear"
+                    data-aos-duration="1000" className="slide">
+                    <img src={slidesData[currentSlide].image} alt="Slide" />
+                </div>
+                <div data-aos="fade-left" data-aos-easing="linear"
+                    data-aos-duration="1000" className="slide-text">{slidesData[currentSlide].text}</div>
+
+                {/* Padination */}
+
+                <SliderPagination currentSlide={currentSlide} totalSlides={slidesData.length} />
+
             </div>
 
-            {/* Limited */}
-
-            <div data-aos="fade-up" data-aos-easing="linear"
-                data-aos-duration="1000" className='limited'>
-                <h3>{slidesData[currentSlide].number}</h3>
-                <p className='edition'>Limited edition</p>
-                <p className='programming-shirt'>Programming Shirt</p>
+            <div className='fixed-card'>
+                <GiShoppingBag fontSize={35} />
             </div>
 
-            {/* Show Now Button */}
+        </>
 
-            <div data-aos="fade-left" data-aos-easing="linear"
-                data-aos-duration="1000" className='shop-now-button'>
-                <button>Shop Now</button>
-            </div>
-
-            {/* Slide Logic */}
-
-            <div data-aos="fade-right" data-aos-easing="linear"
-                data-aos-duration="1000" className="slide">
-                <img src={slidesData[currentSlide].image} alt="Slide" />
-            </div>
-            <div data-aos="fade-left" data-aos-easing="linear"
-                data-aos-duration="1000" className="slide-text">{slidesData[currentSlide].text}</div>
-
-            {/* Padination */}
-
-            <SliderPagination currentSlide={currentSlide} totalSlides={slidesData.length} />
-
-        </div>
     );
 };
 

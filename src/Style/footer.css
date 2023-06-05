@@ -32,3 +32,118 @@
     height: 3px;
     background-color: var(--blue);
 }
+
+.subscribe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe-input {
+    margin: 20px;
+}
+
+.subscribe-input input {
+    width: 220px;
+    height: 35px;
+    padding-left: 10px;
+    border: 1px inset #000;
+}
+
+.subscribe-input button {
+    width: 100px;
+    height: 35px;
+    font-weight: 600;
+    border: 1px inset #000;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+}
+
+.subscribe-input button:hover {
+    background-color: var(--blue);
+    color: #fff;
+}
+
+.footer-container {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+
+.footer-box {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.last-line {
+    width: 2px;
+    height: 15px;
+    margin-top: -10px;
+    background-color: var(--blue);
+}
+
+.main-text {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.ul-box {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.ul-box p {
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    color: #535353;
+    transition: all 0.5s ease-in;
+}
+
+.ul-box p:hover {
+    color: var(--blue);
+}
+
+.ul-box a {
+    text-decoration: none;
+    color: #535353;
+    transition: all 0.5s ease-in;
+}
+
+.ul-box a:hover {
+    color: var(--blue);
+}
+
+.copy-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue);
+    color: #fff;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 950px) {
+    .footer-container {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .footer-container {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+    }
+}
