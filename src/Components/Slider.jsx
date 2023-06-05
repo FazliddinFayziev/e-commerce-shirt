@@ -79,7 +79,8 @@ const Slider = () => {
 
             {/* Shop */}
 
-            <div className='shop'>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='shop'>
                 <h1>Shop</h1>
                 <div className='line'></div>
                 <SliderCategories currentSlide={currentSlide} />
@@ -87,7 +88,8 @@ const Slider = () => {
 
             {/* Limited */}
 
-            <div className='limited'>
+            <div data-aos="fade-up" data-aos-easing="linear"
+                data-aos-duration="1000" className='limited'>
                 <h3>{slidesData[currentSlide].number}</h3>
                 <p className='edition'>Limited edition</p>
                 <p className='programming-shirt'>Programming Shirt</p>
@@ -95,16 +97,19 @@ const Slider = () => {
 
             {/* Show Now Button */}
 
-            <div className='shop-now-button'>
+            <div data-aos="fade-left" data-aos-easing="linear"
+                data-aos-duration="1000" className='shop-now-button'>
                 <button>Shop Now</button>
             </div>
 
             {/* Slide Logic */}
 
-            <div className="slide">
+            <div data-aos="fade-right" data-aos-easing="linear"
+                data-aos-duration="1000" className="slide">
                 <img src={slidesData[currentSlide].image} alt="Slide" />
             </div>
-            <div className="slide-text">{slidesData[currentSlide].text}</div>
+            <div data-aos="fade-left" data-aos-easing="linear"
+                data-aos-duration="1000" className="slide-text">{slidesData[currentSlide].text}</div>
 
             {/* Padination */}
 

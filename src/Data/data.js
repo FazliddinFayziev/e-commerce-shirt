@@ -75,3 +75,28 @@ export const elegantPopular = [
         margin_top: "20px"
     },
 ]
+
+// Instagram Data 
+
+export const data = [
+    {
+        id: 0,
+        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-05_gzpr5f.jpg"
+    },
+    {
+        id: 1,
+        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-11-38_fovpql.jpg"
+    },
+    {
+        id: 2,
+        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-35_oaebhf.jpg"
+    },
+    {
+        id: 3,
+        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-21_hnopuq.jpg"
+    },
+    {
+        id: 4,
+        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-53_j7nxj5.jpg"
+    },
+]

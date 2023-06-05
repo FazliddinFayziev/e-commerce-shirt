@@ -1,8 +1,3 @@
-:root {
-    --font-w: 800;
-    --blue: #7FC0FC;
-}
-
 .blog {
     display: flex;
     justify-content: center;
@@ -25,4 +20,126 @@
     width: 100%;
     height: 3px;
     background-color: var(--blue);
+}
+
+.instagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.instagram-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.follow {
+    text-align: center;
+    margin-top: -10px;
+    font-weight: 800;
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.main-instagram-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instagram-container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto;
+}
+
+.instagram-box {
+    width: 160px;
+    height: 160px;
+    margin: 5px auto;
+}
+
+.insta-img {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    z-index: 1;
+}
+
+.insta-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover {
+    width: 160px;
+    height: 160px;
+    background-color: var(--cover);
+    position: absolute;
+    z-index: 2;
+    margin-top: -160px;
+}
+
+@media screen and (max-width: 950px) {
+    .instagram-container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .instagram-container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+    }
+
+    .instagram-box {
+        width: 150px;
+        height: 150px;
+        margin: 5px auto;
+    }
+
+    .insta-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cover {
+        width: 150px;
+        height: 150px;
+        background-color: var(--cover);
+        position: absolute;
+        z-index: 2;
+        margin-top: -150px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .instagram-box {
+        width: 120px;
+        height: 120px;
+        margin: 5px auto;
+    }
+
+    .insta-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .cover {
+        width: 120px;
+        height: 120px;
+        background-color: var(--cover);
+        position: absolute;
+        z-index: 2;
+        margin-top: -120px;
+    }
 }

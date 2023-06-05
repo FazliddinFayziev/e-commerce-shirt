@@ -8,6 +8,10 @@
     --font-family: 'Dosis',
         sans-serif;
     --backGroundColor: "#fff";
+    --cover: #0000008c;
+    --blue: #7FC0FC;
+    --font-w: 800;
+
 }
 
 body {
