@@ -9,7 +9,7 @@ const Navbar = () => {
         <>
             <div className='navbar-container'>
                 <div className='navbar-box'>
-                    <div className='nav'>
+                    <div onClick={() => setNav(true)} className='nav'>
                         <TiThMenu fontSize={20} />
                     </div>
                     <div className='search'>
