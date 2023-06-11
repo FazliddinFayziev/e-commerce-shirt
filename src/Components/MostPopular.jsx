@@ -1,5 +1,6 @@
 import React from 'react'
 import { popular } from '../Data/data'
+import { Link } from 'react-router-dom';
 
 const MostPopular = () => {
     return (
@@ -22,7 +23,9 @@ const MostPopular = () => {
             </div>
             <div data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="1000" className='button'>
-                <button>View All</button>
+                <Link to="/catalogue">
+                    <button>View All</button>
+                </Link>
             </div>
         </>
     )

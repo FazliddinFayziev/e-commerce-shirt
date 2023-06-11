@@ -4,7 +4,7 @@ import { AiOutlineSearch, AiOutlineShopping } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
 
 const Navbar = () => {
-    const { nav, setNav } = useGlobalContext();
+    const { setNav } = useGlobalContext();
     return (
         <>
             <div className='navbar-container'>

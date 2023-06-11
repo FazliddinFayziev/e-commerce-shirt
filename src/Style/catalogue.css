@@ -1,0 +1,43 @@
+.both-catalogue {
+    display: flex;
+}
+
+.filter {
+    width: 25%;
+    height: 100vh;
+    background-color: var(--filter);
+}
+
+.catalogue {
+    width: 80%;
+    height: 100vh;
+}
+
+.above-nav-container {}
+
+.above-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+
+
+@media screen and (max-width: 950px) {
+    .filter {
+        width: 50%;
+        height: 100vh;
+        position: absolute;
+        z-index: 10;
+    }
+
+    .catalogue {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        z-index: 2;
+    }
+}

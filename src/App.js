@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Error } from "./Pages";
+import { Home, Error, Catalogue } from "./Pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <>
       <Routes>
         <Route path="/*" element={<Home />} />
+        <Route path="/catalogue" element={<Catalogue />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>
