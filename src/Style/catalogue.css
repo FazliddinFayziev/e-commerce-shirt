@@ -1,16 +1,17 @@
 .both-catalogue {
     display: flex;
+    position: relative;
 }
 
 .filter {
     width: 25%;
-    height: 100vh;
+    min-height: 1px;
     background-color: var(--filter);
 }
 
 .catalogue {
     width: 80%;
-    height: 100vh;
+    height: 100%;
 }
 
 .close-filter {
@@ -60,6 +61,7 @@
 
 .catalogue-one p {
     font-weight: var(--font-w);
+    cursor: pointer;
 }
 
 .catalogue-one .no-active {
@@ -85,28 +87,106 @@
 }
 
 .catalogue-two {
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100px;
+    width: 15%;
 }
 
 .catalogue-box {
     position: relative;
+    z-index: 1;
 }
 
 .catalogue-box-count-product {
     position: absolute;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20px;
     height: 20px;
+    top: 5%;
+    left: 75%;
+    border-radius: 50%;
     background-color: var(--blue);
 }
 
+.catalogue-search {
+    cursor: pointer;
+}
+
+.catalogue-box {
+    cursor: pointer;
+}
+
+.all-clothes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    margin-top: 30px;
+}
+
+.single-cloth {
+    width: 250px;
+    height: 300px;
+    margin: 10px auto;
+}
 
 
+.single-cloth img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shirt-container {
+    display: flex;
+    justify-content: center;
+}
+
+.shirt-info {
+    width: 250px;
+}
+
+.shirt-info p {
+    margin: 2px 0;
+    width: 250px;
+}
+
+.title {
+    color: #000;
+    font-weight: var(--font-w);
+}
+
+.category {
+    color: #757575;
+    font-weight: var(--font-w);
+}
+
+.price {
+    font-weight: var(--font-w);
+    color: #31adff;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .single-cloth {
+        width: 200px;
+        height: 250px;
+        margin: 10px auto;
+    }
+
+    .shirt-info {
+        width: 200px;
+    }
+
+    .shirt-info p {
+        width: 200px;
+    }
+}
 
 
 @media screen and (max-width: 950px) {
@@ -117,6 +197,7 @@
         border: solid 2px #000;
         border-radius: 50%;
         background-color: #000;
+        margin-left: 10px;
         color: #fff;
         width: 45px;
         height: 45px;
@@ -132,7 +213,7 @@
     .filter {
         display: block;
         width: 50%;
-        height: 100vh;
+        height: 100%;
         position: absolute;
         z-index: 10;
         transition: all 0.5s ease-in;
@@ -155,7 +236,7 @@
 
     .catalogue {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         position: relative;
         z-index: 2;
     }
@@ -165,5 +246,33 @@
         justify-content: space-around;
         align-items: center;
         width: 200px;
+    }
+
+    .catalogue-two {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 25%;
+    }
+
+    .all-clothes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+        margin-top: 30px;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+    .all-clothes {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+        margin-top: 30px;
     }
 }
