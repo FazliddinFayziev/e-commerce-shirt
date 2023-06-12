@@ -13,7 +13,13 @@
     height: 100vh;
 }
 
-.above-nav-container {}
+.close-filter {
+    display: none;
+}
+
+.nav-filter {
+    display: none;
+}
 
 .above-nav {
     display: flex;
@@ -22,16 +28,129 @@
     padding: 10px;
 }
 
+.language {
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+}
+
+.language .no-active {
+    color: #757575;
+    font-weight: var(--font-w);
+    cursor: pointer;
+}
+
+.language .active {
+    font-weight: var(--font-w);
+    cursor: pointer;
+}
+
+
+.home-catalogue-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalogue-one {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 35%;
+}
+
+.catalogue-one p {
+    font-weight: var(--font-w);
+}
+
+.catalogue-one .no-active {
+    color: #414141;
+}
+
+.catalogue-one .active {
+    color: #31adff;
+}
+
+.catalogue-dot {
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    top: 75%;
+    left: 45%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #31adff;
+}
+
+.catalogue-two {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+}
+
+.catalogue-box {
+    position: relative;
+}
+
+.catalogue-box-count-product {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: var(--blue);
+}
+
 
 
 
 
 @media screen and (max-width: 950px) {
+    .nav-filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 2px #000;
+        border-radius: 50%;
+        background-color: #000;
+        color: #fff;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-filter:hover {
+        width: 50px;
+        height: 50px;
+    }
+
     .filter {
+        display: block;
         width: 50%;
         height: 100vh;
         position: absolute;
         z-index: 10;
+        transition: all 0.5s ease-in;
+        transform: translateX(0);
+    }
+
+    .filter.close {
+        transform: translateX(-100%);
+    }
+
+    .close-filter {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .close-icon {
+        padding: 2px;
+        cursor: pointer;
     }
 
     .catalogue {
@@ -39,5 +158,12 @@
         height: 100vh;
         position: relative;
         z-index: 2;
+    }
+
+    .catalogue-one {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 200px;
     }
 }
