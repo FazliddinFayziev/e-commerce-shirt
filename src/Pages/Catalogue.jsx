@@ -13,14 +13,30 @@ const Catalogue = () => {
 
     const [sidebar, setSidebar] = useState(false);
 
+    useEffect(() => {
+
+        // Diable scroll 
+        if (sidebar) {
+            document.body.classList.add('disable-scroll');
+        }
+
+        // Enable scroll
+        if (!sidebar) {
+            document.body.classList.remove('disable-scroll');
+        }
+
+    }, [sidebar])
+
     return (
         <>
+            {sidebar && (
+                <div className='catalogue-cover'></div>
+            )}
 
             <div className='both-catalogue'>
 
                 <Filter sidebar={sidebar} setSidebar={setSidebar} />
 
-                {/* <div className='catalogue-cover'></div> */}
                 <div className='catalogue'>
 
                     <div className='above-nav-container'>

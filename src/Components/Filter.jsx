@@ -17,6 +17,19 @@ const Filter = ({ sidebar, setSidebar }) => {
                     </div>
                 </div>
 
+                <div className='shop-filter'>
+                    <div className='shop-filter-title'>
+                        <h2>Shop</h2>
+                        <div className='line-blue'></div>
+                        <div className='filter-categories'>
+                            <p>All</p>
+                            <p>Simple</p>
+                            <p>Humble</p>
+                            <p>Elegant</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     )
