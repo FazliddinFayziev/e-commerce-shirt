@@ -1,22 +1,15 @@
 {
-  "name": "hello-world",
+  "name": "shirt",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "animate.css": "^4.1.1",
-    "aos": "^3.0.0-beta.6",
+    "aos": "^2.3.4",
+    "cra-template": "1.2.0",
     "react": "^18.2.0",
-    "react-animate-on-scroll": "^2.1.7",
     "react-dom": "^18.2.0",
-    "react-hook-mighty-mouse": "^1.4.31",
     "react-icons": "^4.9.0",
-    "react-router-dom": "^6.11.2",
-    "react-scripts": "5.0.1",
-    "react-scroll-parallax": "^3.4.2",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.13.0",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

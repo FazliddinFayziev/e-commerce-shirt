@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsInstagram } from "react-icons/bs"
+import { BsInstagram } from "react-icons/bs";
 import { data } from "../Data/data";
 
 const Blog = () => {

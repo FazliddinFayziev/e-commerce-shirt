@@ -1,104 +1,86 @@
-import React, { useState } from 'react';
+import 'aos/dist/aos.css';
 import { TiThMenu } from "react-icons/ti";
-import { AiOutlineClose, AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
+import React, { useState, useEffect } from 'react';
+import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
 
 import "../Style/catalogue.css";
-import { popular } from '../Data/data';
+import "../Style/footer.css";
+
+import { AllClothes, Filter, SmallFooter } from '../Components';
+import { Link } from 'react-router-dom';
 
 const Catalogue = () => {
+
     const [sidebar, setSidebar] = useState(false);
 
     return (
-        <div className='both-catalogue'>
+        <>
 
-            <div className={`filter ${!sidebar ? 'close' : ''}`}>
+            <div className='both-catalogue'>
 
-                <div className='close-filter'>
+                <Filter sidebar={sidebar} setSidebar={setSidebar} />
 
-                    <AiOutlineClose onClick={() => setSidebar(false)} className='close-icon' fontSize={25} />
+                {/* <div className='catalogue-cover'></div> */}
+                <div className='catalogue'>
 
-                </div>
+                    <div className='above-nav-container'>
 
-                <div className='main-filter-container'></div>
+                        {/* FIRST CATALOGUE */}
 
-            </div>
+                        <nav className='above-nav'>
 
+                            {/* MENU  */}
 
-
-            <div className='catalogue'>
-
-                <div className='above-nav-container'>
-
-                    {/* FIRST CATALOGUE */}
-
-                    <nav className='above-nav'>
-
-                        {/* MENU  */}
-
-                        <div onClick={() => setSidebar(true)} className='nav-filter'>
-                            <TiThMenu fontSize={20} />
-                        </div>
-
-                        <div className='big-screen-nothing'></div>
-
-                        <ul className='language'>
-                            <p className='active'>Eng</p>
-                            <p className='no-active'>Ru</p>
-                            <p className='no-active'>Uz</p>
-                        </ul>
-                    </nav>
-
-                    {/* SECOND CATALOGUE */}
-
-                    <div className='home-catalogue-nav'>
-
-                        <div className='catalogue-one'>
-                            <p className='no-active'>Home</p>
-                            <div className='catalogue-dot'>
-                                <p className='active'>Catalogue</p>
-                                <div className='dot'></div>
+                            <div onClick={() => setSidebar(true)} className='nav-filter'>
+                                <TiThMenu fontSize={20} />
                             </div>
-                        </div>
 
-                        <div className='catalogue-two'>
-                            <div className='catalogue-search'>
-                                <AiOutlineSearch fontSize={30} />
-                            </div>
-                            <div className='catalogue-box'>
-                                <AiOutlineShopping fontSize={30} />
-                            </div>
-                            <div className='catalogue-box-count-product'><p>3</p></div>
-                        </div>
+                            <div className='big-screen-nothing'></div>
 
-                    </div>
+                            <ul className='language'>
+                                <p className='active'>Eng</p>
+                                <p className='no-active'>Ru</p>
+                                <p className='no-active'>Uz</p>
+                            </ul>
+                        </nav>
 
-                    {/* All clothes */}
+                        {/* SECOND CATALOGUE */}
 
-                    <div className='all-clothes'>
-                        {popular.map((product) => {
-                            return (
-                                <div>
-                                    <div className='single-cloth'>
-                                        <img src={product.img} alt="single-cloth" />
-                                    </div>
+                        <div className='home-catalogue-nav'>
 
-                                    <div className='shirt-container'>
-                                        <div className='shirt-info'>
-                                            <p className='category'>category</p>
-                                            <p className='title'>our title</p>
-                                            <p className='price'>20 $</p>
-                                        </div>
-                                    </div>
+                            <div className='catalogue-one'>
+                                <Link style={{ textDecoration: 'none' }} to={'/'}>
+                                    <p className='no-active'>Home</p>
+                                </Link>
+                                <div className='catalogue-dot'>
+                                    <p className='active'>Catalogue</p>
+                                    <div className='dot'></div>
                                 </div>
-                            )
-                        })}
+                            </div>
+
+                            <div className='catalogue-two'>
+                                <div className='catalogue-search'>
+                                    <AiOutlineSearch fontSize={30} />
+                                </div>
+                                <div className='catalogue-box'>
+                                    <AiOutlineShopping fontSize={30} />
+                                </div>
+                                <div className='catalogue-box-count-product'><p>3</p></div>
+                            </div>
+
+                        </div>
+
+                        <AllClothes />
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <SmallFooter />
+
+        </>
 
     );
 };

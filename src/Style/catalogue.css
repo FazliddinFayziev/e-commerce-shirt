@@ -9,6 +9,30 @@
     background-color: var(--filter);
 }
 
+.filter-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--font-w);
+    margin-top: 25px;
+}
+
+.filter-title h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.filter-title h1:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00bbff;
+}
+
 .catalogue {
     width: 80%;
     height: 100%;
@@ -230,8 +254,17 @@
     }
 
     .close-icon {
-        padding: 2px;
+        padding: 10px;
+        color: #404040;
         cursor: pointer;
+    }
+
+    .catalogue-cover {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 8;
     }
 
     .catalogue {
