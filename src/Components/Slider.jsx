@@ -100,8 +100,7 @@ const Slider = () => {
 
                 {/* Show Now Button */}
 
-                <div data-aos="fade-left" data-aos-easing="linear"
-                    data-aos-duration="1000" className='shop-now-button'>
+                <div className='shop-now-button'>
                     <button>Shop Now</button>
                 </div>
 

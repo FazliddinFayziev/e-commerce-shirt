@@ -1,20 +1,21 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Components
 
 import {
     Blog,
+    Cover,
     Navbar,
     Footer,
+    Loading,
     LogoTitle,
     HerroBanner,
     MostPoppular,
     HumbleProducts,
     PopularElegant,
-    Cover,
 } from '../Components';
 
 // Style
@@ -47,6 +48,24 @@ const Home = () => {
             });
         });
     }, [])
+
+    // Local
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    // setTimeOut
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2500);
+    }, [])
+
+    // Loading before start
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <>

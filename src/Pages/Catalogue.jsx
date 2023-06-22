@@ -1,6 +1,6 @@
 import 'aos/dist/aos.css';
 import { TiThMenu } from "react-icons/ti";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
 
 import "../Style/catalogue.css";
@@ -11,7 +11,10 @@ import { Link } from 'react-router-dom';
 
 const Catalogue = () => {
 
+    const categories = ["All", "Simple", "Humble", "Elegant"]
+
     const [sidebar, setSidebar] = useState(false);
+    const [activeCategory, setActiveCategory] = useState("All");
 
     useEffect(() => {
 
@@ -27,6 +30,12 @@ const Catalogue = () => {
 
     }, [sidebar])
 
+    const navRef = useRef(null);
+
+    useEffect(() => {
+        navRef.current.focus();
+    }, []);
+
     return (
         <>
             {sidebar && (
@@ -35,7 +44,13 @@ const Catalogue = () => {
 
             <div className='both-catalogue'>
 
-                <Filter sidebar={sidebar} setSidebar={setSidebar} />
+                <Filter
+                    sidebar={sidebar}
+                    setSidebar={setSidebar}
+                    categories={categories}
+                    activeCategory={activeCategory}
+                    setActiveCategory={setActiveCategory}
+                />
 
                 <div className='catalogue'>
 
@@ -43,7 +58,7 @@ const Catalogue = () => {
 
                         {/* FIRST CATALOGUE */}
 
-                        <nav className='above-nav'>
+                        <nav className='above-nav' tabIndex={0} ref={navRef}>
 
                             {/* MENU  */}
 

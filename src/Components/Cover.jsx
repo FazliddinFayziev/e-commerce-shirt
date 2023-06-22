@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineClose } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
 
@@ -7,6 +7,21 @@ const Cover = () => {
     // Global
 
     const { nav, setNav } = useGlobalContext();
+
+    // Local
+    useEffect(() => {
+
+        // Diable scroll 
+        if (nav) {
+            document.body.classList.add('disable-scroll');
+        }
+
+        // Enable scroll
+        if (!nav) {
+            document.body.classList.remove('disable-scroll');
+        }
+
+    }, [nav])
 
     return (
         <div className={`cover-subject ${!nav ? 'close' : ''}`}>

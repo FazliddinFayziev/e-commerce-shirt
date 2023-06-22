@@ -4,6 +4,7 @@ export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
 export { default as Slider } from "./Slider";
 export { default as Filter } from "./Filter";
+export { default as Loading } from "./Loading";
 export { default as LogoTitle } from "./LogoTitle";
 export { default as AllClothes } from "./AllClothes";
 export { default as SmallFooter } from "./SmallFooter";
