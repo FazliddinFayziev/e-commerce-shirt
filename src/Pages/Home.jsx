@@ -38,17 +38,6 @@ const Home = () => {
         AOS.init();
     }, [])
 
-    useEffect(() => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute("href")).scrollIntoView({
-                    behavior: "smooth"
-                });
-            });
-        });
-    }, [])
-
     // Local
 
     const [isLoading, setIsLoading] = useState(true);
@@ -66,6 +55,8 @@ const Home = () => {
     if (isLoading) {
         return <Loading />
     }
+
+    // Main
 
     return (
         <>

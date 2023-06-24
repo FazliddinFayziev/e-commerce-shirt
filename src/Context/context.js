@@ -8,10 +8,19 @@ export const AppProvider = ({ children }) => {
     // Change navbar
     const [nav, setNav] = useState(false);
 
+    // Languages
+    const languages = ["Eng", "Ru", "Uz"];
+    const [activeLanguage, setActiveLanguage] = useState("Eng");
+
     return <AppContext.Provider value={{
 
         // Change navbar
-        nav, setNav
+        nav, setNav,
+
+        // Languages
+        languages,
+        activeLanguage,
+        setActiveLanguage,
 
     }}>
         {children}

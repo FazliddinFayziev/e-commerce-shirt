@@ -1,20 +1,35 @@
 import 'aos/dist/aos.css';
-import { TiThMenu } from "react-icons/ti";
-import React, { useState, useEffect, useRef } from 'react';
-import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useGlobalContext } from '../Context/context';
+import { AiFillFilter, AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
+
+
+// Styles
 
 import "../Style/catalogue.css";
 import "../Style/footer.css";
 
-import { AllClothes, Filter, SmallFooter } from '../Components';
-import { Link } from 'react-router-dom';
+// Components
+
+import { AllClothes, Filter, Loading, SmallFooter } from '../Components';
+
 
 const Catalogue = () => {
 
+    // Global
+
+    const { activeLanguage, setActiveLanguage, languages } = useGlobalContext();
+
+    // Local
+
     const categories = ["All", "Simple", "Humble", "Elegant"]
+    const options = ["All", "Python", "Java", "React", "C#"]
 
     const [sidebar, setSidebar] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState("All");
+    const [activeOptions, setActiveOptions] = useState("All");
 
     useEffect(() => {
 
@@ -30,11 +45,21 @@ const Catalogue = () => {
 
     }, [sidebar])
 
-    const navRef = useRef(null);
+    // setTimeOut
 
     useEffect(() => {
-        navRef.current.focus();
-    }, []);
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2500);
+    }, [])
+
+    // Loading before start
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    // Main
 
     return (
         <>
@@ -44,11 +69,16 @@ const Catalogue = () => {
 
             <div className='both-catalogue'>
 
+                {/* Filter */}
+
                 <Filter
+                    options={options}
                     sidebar={sidebar}
-                    setSidebar={setSidebar}
                     categories={categories}
+                    setSidebar={setSidebar}
+                    activeOptions={activeOptions}
                     activeCategory={activeCategory}
+                    setActiveOptions={setActiveOptions}
                     setActiveCategory={setActiveCategory}
                 />
 
@@ -58,20 +88,26 @@ const Catalogue = () => {
 
                         {/* FIRST CATALOGUE */}
 
-                        <nav className='above-nav' tabIndex={0} ref={navRef}>
+                        <nav className='above-nav'>
 
                             {/* MENU  */}
 
                             <div onClick={() => setSidebar(true)} className='nav-filter'>
-                                <TiThMenu fontSize={20} />
+                                <AiFillFilter fontSize={20} />
                             </div>
 
                             <div className='big-screen-nothing'></div>
 
                             <ul className='language'>
-                                <p className='active'>Eng</p>
-                                <p className='no-active'>Ru</p>
-                                <p className='no-active'>Uz</p>
+                                {languages.map((language, index) => (
+                                    <p
+                                        key={index}
+                                        onClick={() => setActiveLanguage(language)}
+                                        className={language === activeLanguage ? 'active' : 'no-active'}
+                                    >
+                                        {language}
+                                    </p>
+                                ))}
                             </ul>
                         </nav>
 
@@ -101,6 +137,8 @@ const Catalogue = () => {
 
                         </div>
 
+                        {/* ALL CLOTHES */}
+
                         <AllClothes />
 
                     </div>
@@ -108,6 +146,8 @@ const Catalogue = () => {
                 </div>
 
             </div>
+
+            {/* Footer */}
 
             <SmallFooter />
 

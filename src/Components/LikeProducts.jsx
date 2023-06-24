@@ -2,10 +2,17 @@ import React from 'react';
 import { popular } from '../Data/data';
 import { Link } from 'react-router-dom';
 
-const AllClothes = () => {
+const LikeProducts = () => {
     return (
         <>
-            {/* All clothes */}
+
+            {/* TITLE */}
+
+            <div className='logo-title'>
+                <h3>You may like</h3>
+            </div>
+
+            {/* CONTAINER OF CLOTHES */}
 
             <div className='all-clothes'>
                 {popular.map((product, index) => {
@@ -29,8 +36,9 @@ const AllClothes = () => {
                     )
                 })}
             </div>
+
         </>
     )
 }
 
-export default AllClothes
+export default LikeProducts

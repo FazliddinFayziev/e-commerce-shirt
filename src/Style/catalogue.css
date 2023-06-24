@@ -63,11 +63,13 @@
     color: #757575;
     font-weight: var(--font-w);
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .language .active {
     font-weight: var(--font-w);
     cursor: pointer;
+    margin-right: 20px;
 }
 
 
@@ -269,7 +271,7 @@
     grid-auto-rows: auto;
     grid-gap: 0;
     margin-top: 20px;
-    width: 50%;
+    width: 60%;
 }
 
 .single-color {
@@ -277,12 +279,31 @@
     height: 35px;
     margin: 10px auto;
     border-radius: 50%;
+    border: inset 1px #000;
     cursor: pointer;
 }
 
+.single-color-active {
+    width: 35px;
+    height: 35px;
+    margin: 10px auto;
+    border-radius: 50%;
+    border: inset 5px var(--blue);
+    cursor: pointer;
+}
 
+.filter-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
 
-
+.filter-footer p {
+    color: #777777;
+    font-size: 14px;
+    font-weight: 600;
+}
 
 @media screen and (max-width: 1024px) {
     .single-cloth {
@@ -418,6 +439,14 @@
         margin-top: 30px;
     }
 
+    .filter-footer {
+        height: 20vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
 
 
@@ -428,5 +457,23 @@
         grid-auto-rows: auto;
         grid-gap: 1rem;
         margin-top: 30px;
+    }
+
+    .single-color {
+        width: 25px;
+        height: 25px;
+        margin: 10px auto;
+        border-radius: 50%;
+        border: inset 1px #000;
+        cursor: pointer;
+    }
+
+    .single-color-active {
+        width: 25px;
+        height: 25px;
+        margin: 10px auto;
+        border-radius: 50%;
+        border: inset 3px var(--blue);
+        cursor: pointer;
     }
 }

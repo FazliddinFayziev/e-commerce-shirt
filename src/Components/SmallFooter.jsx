@@ -13,15 +13,13 @@ const SmallFooter = () => {
 
                 {/* subscribe text */}
 
-                <div data-aos="fade-up-right" data-aos-easing="linear"
-                    data-aos-duration="1000" className='subscribe'>
+                <div className='subscribe'>
                     <h3>SUBSCRIBE TO OUR NEWLETTER</h3>
                 </div>
 
                 {/* subscribe input */}
 
-                <div data-aos="fade-right" data-aos-easing="linear"
-                    data-aos-duration="1000" className='subscribe-container'>
+                <div className='subscribe-container'>
                     <div className='subscribe-input'>
                         <input type="text" placeholder='Your E-mail' />
                         <button>Subscribe</button>
@@ -34,8 +32,7 @@ const SmallFooter = () => {
 
                     {/* Box 1 */}
 
-                    <div data-aos="fade-right" data-aos-easing="linear"
-                        data-aos-duration="1000" className='footer-box'>
+                    <div className='footer-box'>
                         <p className='main-text'>Categories</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
@@ -49,8 +46,7 @@ const SmallFooter = () => {
 
                     {/* Box 3 */}
 
-                    <div data-aos="fade-right" data-aos-easing="linear"
-                        data-aos-duration="1000" className='footer-box'>
+                    <div className='footer-box'>
                         <p className='main-text'>Social</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>

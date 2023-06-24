@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Footer = () => {
+
+    // MAIN FUNCTION OF FOOTER
+
+    useEffect(() => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    }, [])
+
+    // MAIN
+
     return (
         <>
             <footer>
