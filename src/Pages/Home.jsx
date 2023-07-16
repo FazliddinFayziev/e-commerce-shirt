@@ -66,11 +66,7 @@ const Home = () => {
                 <LogoTitle />
                 <HerroBanner />
                 <div id='popular' className='products'>
-                    <Routes>
-                        <Route path='/' element={<MostPoppular />} />
-                        <Route path='/humble' element={<HumbleProducts />} />
-                        <Route path='/elegant' element={<PopularElegant />} />
-                    </Routes>
+                    <MostPoppular />
                 </div>
                 <Blog />
                 <Footer />

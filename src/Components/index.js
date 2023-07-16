@@ -13,5 +13,3 @@ export { default as SmallNavbar } from "./SmallNavbar";
 export { default as HerroBanner } from "./HerroBanner";
 export { default as MostPoppular } from "./MostPopular";
 export { default as LikeProducts } from "./LikeProducts";
-export { default as PopularElegant } from "./PopularElegant";
-export { default as HumbleProducts } from "./HumbleProducts";

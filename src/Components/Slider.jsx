@@ -56,13 +56,13 @@ const Slider = () => {
     const SliderCategories = ({ currentSlide }) => {
         const categories = slidesData.map((slide, index) => {
             return (
-                <Link className='link' to={`${slide.path}`}>
-                    <li
-                        key={index}
-                        className={`${index === currentSlide ? 'active' : ''}`}
-                        onClick={() => setCurrentSlide(index)}
-                    >{slide.category}</li>
-                </Link>
+                <li
+                    key={index}
+                    className={`${index === currentSlide ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(index)}
+                >
+                    {slide.category}
+                </li>
             )
         })
 
