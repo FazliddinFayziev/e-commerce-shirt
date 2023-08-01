@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { GiShoppingBag } from "react-icons/gi";
+import { useGlobalContext } from '../Context/context';
 
 const Slider = () => {
+
+    const { setCart } = useGlobalContext();
 
     //  Data
 
@@ -117,10 +119,6 @@ const Slider = () => {
 
                 <SliderPagination currentSlide={currentSlide} totalSlides={slidesData.length} />
 
-            </div>
-
-            <div className='fixed-card'>
-                <GiShoppingBag fontSize={35} />
             </div>
 
         </>

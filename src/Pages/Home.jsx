@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
 
 // Components
 
@@ -14,8 +13,6 @@ import {
     LogoTitle,
     HerroBanner,
     MostPoppular,
-    HumbleProducts,
-    PopularElegant,
 } from '../Components';
 
 // Style

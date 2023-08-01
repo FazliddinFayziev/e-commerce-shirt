@@ -12,6 +12,9 @@ export const AppProvider = ({ children }) => {
     const languages = ["Eng", "Ru", "Uz"];
     const [activeLanguage, setActiveLanguage] = useState("Eng");
 
+    // cartItem Logic
+    const [cart, setCart] = useState(false);
+
     return <AppContext.Provider value={{
 
         // Change navbar
@@ -21,6 +24,10 @@ export const AppProvider = ({ children }) => {
         languages,
         activeLanguage,
         setActiveLanguage,
+
+        // Change cart
+        cart, setCart,
+
 
     }}>
         {children}

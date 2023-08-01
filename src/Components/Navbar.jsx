@@ -4,7 +4,7 @@ import { AiOutlineSearch, AiOutlineShopping } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
 
 const Navbar = () => {
-    const { setNav } = useGlobalContext();
+    const { setNav, setCart } = useGlobalContext();
     return (
         <>
             <div className='navbar-container'>
@@ -20,7 +20,7 @@ const Navbar = () => {
                     <div className='account'>
                         <p>Account</p>
                     </div>
-                    <div className='box'>
+                    <div onClick={() => setCart(true)} className='box'>
                         <AiOutlineShopping fontSize={30} />
                     </div>
                     <div className='count-product'><p>3</p></div>

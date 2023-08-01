@@ -5,6 +5,7 @@ import { useGlobalContext } from '../Context/context';
 import { AiFillFilter, AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
 
 
+
 // Styles
 
 import "../Style/catalogue.css";
