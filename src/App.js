@@ -9,16 +9,28 @@ function App() {
   const { setCart } = useGlobalContext();
   return (
     <>
+
+      {/* CartItems */}
+
       <CartItems />
+
+      {/* Routes */}
+
       <Routes>
+
         <Route path="/*" element={<Home />} />
         <Route path="/catalogue" element={<Catalogue />} />
         <Route path="/catalogue/:productId" element={<Product />} />
         <Route path="*" element={<Error />} />
+
       </Routes>
+
+      {/* Fixed Card to open CardItems card */}
+
       <div onClick={() => setCart(true)} className='fixed-card'>
         <GiShoppingBag fontSize={35} />
       </div>
+
     </>
   );
 }

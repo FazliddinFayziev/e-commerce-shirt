@@ -133,7 +133,7 @@
 
 .fixed-card {
     position: fixed;
-    z-index: 10;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
