@@ -4,10 +4,10 @@ import "../Style/loading.css";
 const Loading = () => {
     return (
         <div className='main-loading'>
-            <div class="container-loading">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
+            <div className="container-loading">
+                <div className="block"></div>
+                <div className="block"></div>
+                <div className="block"></div>
             </div>
         </div>
     )

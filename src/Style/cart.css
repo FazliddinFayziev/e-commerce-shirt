@@ -1,3 +1,8 @@
+/* DISABLE SCROLLING THE BODY */
+body.disable-cart-scroll {
+    overflow: hidden;
+}
+
 .cart-subject {
     width: 100%;
     height: 100%;
@@ -6,6 +11,25 @@
     background-color: #ffffff;
     transition: transform 0.5s ease-in;
     transform: translateX(0);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+.cart-subject::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cart-subject::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-color);
+}
+
+.cart-subject::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+}
+
+.cart-subject::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color);
 }
 
 .cart-subject.close {
@@ -47,25 +71,62 @@
     background-color: #000;
 }
 
-.back-card-one {
+.cartItems-all {
+    width: 100%;
+    height: 65vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+.center-next-cart-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.next-cart-buttons {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.next-cart-buttons button {
+    margin: 20px;
+    width: 100px;
+    height: 30px;
+    border: 2px solid #000;
+    background-color: #fff;
+    font-family: var(--font);
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #fff;
-    color: var(--blue);
+}
+
+.next-cart-buttons button:hover {
+    background-color: var(--blue);
+    color: #fff;
     border: 1px solid #000;
-    position: absolute;
-    z-index: 10;
-    top: 20%;
-    left: 10px;
-    cursor: pointer;
+}
+
+.back-icon-small {
+    margin-right: 5px;
+}
+
+.single-cart {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
 .single-card-product {
     display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 80%;
 }
 
 .products-card-image {
@@ -83,6 +144,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    width: 25%;
 }
 
 .quantity {
@@ -156,9 +218,223 @@
     cursor: pointer;
 }
 
+.price-cart {
+    margin: 10px;
+}
+
+.price-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 20px 10px;
+}
+
+.close-cart-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 30px;
+    height: 30px;
+    width: 30px;
+}
+
+.small-cart {
+    display: none;
+}
+
+/* MEDIA  */
+
+/* 950 PX ==================> */
+
+@media screen and (max-width: 950px) {
+
+    .single-cart {
+        display: none;
+    }
+
+    .category-small-cart-title {
+        display: block;
+        font-weight: 800;
+        color: #484848;
+    }
+
+    .small-cart {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        position: relative;
+        margin: 20px auto;
+    }
+
+    .small-single-cart {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .close-icon-small-cart {
+        position: absolute;
+        top: 0;
+        left: 10%;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--blue);
+        color: #fff;
+    }
+
+    .small-single-project-image {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 10px;
+    }
+
+    .small-single-project-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .small-cart-title {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .small-cart-title p {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .small-cart-size select {
+        width: 80px;
+        height: 25px;
+        padding-left: 10px;
+        border: 1px solid #000;
+    }
+
+    .small-cart-price {
+        color: var(--blue);
+    }
+
+    .play-with-small-cart {
+        width: 30px;
+        height: 100%;
+    }
+
+    .play-with-small-cart button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 2px;
+        color: #000;
+        background-color: #e0e0e0;
+    }
+
+    .display-small-number {
+        display: flex;
+        justify-content: center;
+        width: 30px;
+        height: 50px;
+        font-weight: 700;
+    }
+
+    .increment {
+        transform: rotate(-90deg);
+    }
+
+    .decrement {
+        transform: rotate(90deg);
+    }
+}
+
+/* 768 PX ==================> */
 
 @media screen and (max-width: 768px) {
     .total-card-navbar {
         font-size: 13px;
+    }
+}
+
+/* 450 PX ==================> */
+
+@media screen and (max-width: 450px) {
+    .category-small-cart-title {
+        display: none;
+    }
+
+    .small-single-project-image {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 10px;
+    }
+
+    .small-cart-title {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .small-cart-title p {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .small-cart-size select {
+        width: 80px;
+        height: 25px;
+        padding-left: 10px;
+        border: 1px solid #000;
+    }
+
+    .small-cart-price {
+        color: var(--blue);
+    }
+
+    .play-with-small-cart {
+        width: 30px;
+        height: 100%;
+    }
+
+    .play-with-small-cart button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 2px;
+        color: #000;
+        background-color: #e0e0e0;
+    }
+
+    .display-small-number {
+        display: flex;
+        justify-content: center;
+        width: 30px;
+        height: 50px;
+        font-weight: 700;
+    }
+
+    .increment {
+        transform: rotate(-90deg);
+    }
+
+    .decrement {
+        transform: rotate(90deg);
     }
 }

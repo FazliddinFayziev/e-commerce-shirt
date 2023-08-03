@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 
 // Icons
-import { AiFillHome, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { AiFillBackward } from "react-icons/ai";
 
 // Global Imports
 import { useGlobalContext } from '../Context/context';
 
 // Styles
 import "../Style/cart.css";
+import SingleItem from './SingleItem';
 
 const CartItems = () => {
 
@@ -19,12 +20,12 @@ const CartItems = () => {
 
         // Diable scroll 
         if (cart) {
-            document.body.classList.add('disable-scroll');
+            document.body.classList.add('disable-cart-scroll');
         }
 
         // Enable scroll
         if (!cart) {
-            document.body.classList.remove('disable-scroll');
+            document.body.classList.remove('disable-cart-scroll');
         }
 
     }, [cart])
@@ -72,61 +73,19 @@ const CartItems = () => {
                 <hr className='straight-line' />
             </div>
 
-            {/* Go back button for cartItems */}
+            {/* Item PRODUCTS of CARD  */}
 
-            <div onClick={() => setCart(false)} className='back-card-one'>
-                <AiFillHome />
+            <div className='cartItems-all'>
+                <SingleItem />
+                <SingleItem />
+                <SingleItem />
+                <SingleItem />
             </div>
 
-            <div>
-                <div className='single-card-product'>
-
-                    {/* Product Image */}
-
-                    <div className='products-card-image'>
-                        <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-image" />
-                    </div>
-
-                    {/* Product Information */}
-
-                    <div className='product-card-description'>
-                        <h3>AWS T-Shirt</h3>
-                        <p>Humble</p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, sequi?</p>
-                    </div>
-
-                    {/* Quantity Information */}
-
-                    <div className='quantity'>
-                        <p className='quantity-title'>Quantity:</p>
-                        <div className='product-card-buttons'>
-                            <button>
-                                <AiOutlinePlus fontSize={20} />
-                            </button>
-                            <p>0</p>
-                            <button>
-                                <AiOutlineMinus fontSize={20} />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Size Information */}
-
-                    <div className='product-card-size'>
-                        <p className='size-title'>Size:</p>
-                        <div className='size-card'>
-                            <select name="" id="">
-                                <option value="">S</option>
-                                <option value="">M</option>
-                                <option value="">L</option>
-                                <option value="">XS</option>
-                                <option value="">XM</option>
-                                <option value="">XL</option>
-                                <option value="">XXL</option>
-                            </select>
-                        </div>
-                    </div>
-
+            <div className='center-next-cart-buttons'>
+                <div className='next-cart-buttons'>
+                    <button onClick={() => setCart(false)}> <AiFillBackward className='back-icon-small' /> Back</button>
+                    <button>Continue</button>
                 </div>
             </div>
 
