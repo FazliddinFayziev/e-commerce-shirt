@@ -1,34 +1,61 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { popular } from '../Data/data';
 import { Link } from 'react-router-dom';
 
+// redux related
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../Container/productSlice';
+
 const AllClothes = () => {
+
+    // redux related
+    const { loading, products, error } = useSelector((state) => state.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [])
+
+    useEffect(() => {
+        console.log(products)
+    }, [products])
+
+
+    // Main
+
     return (
         <>
             {/* All clothes */}
 
-            <div className='all-clothes'>
-                {popular.map((product, index) => {
-                    return (
-                        <div key={index}>
+            {loading && (<div>Loading ...</div>)}
 
-                            <Link to={`/catalogue/${product.id}`}>
-                                <div className='single-cloth'>
-                                    <img src={product.img} alt="single-cloth" />
-                                </div>
-                            </Link>
+            {!loading && error ? (<div>Error: {error}</div>) : null}
+            {!loading && products.length ? (
+                <div className='all-clothes'>
+                    {products.map((product, index) => {
+                        return (
+                            <div key={index}>
 
-                            <div className='shirt-container'>
-                                <div className='shirt-info'>
-                                    <p className='category'>category</p>
-                                    <p className='title'>our title</p>
-                                    <p className='price'>20 $</p>
+                                <Link to={`/catalogue/${product.id}`}>
+                                    <div className='single-cloth'>
+                                        <img src={product.images} alt="single-cloth" />
+                                    </div>
+                                </Link>
+
+                                <div className='shirt-container'>
+                                    <div className='shirt-info'>
+                                        <p className='category'>{product.category}</p>
+                                        <p className='title'>{product.name}</p>
+                                        <p className='price'>{product.price} UZS</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </div>
+                        )
+                    })}
+                </div>
+            ) : (
+                <div>No products Yet</div>
+            )}
         </>
     )
 }

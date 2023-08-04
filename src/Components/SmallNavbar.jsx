@@ -54,9 +54,9 @@ const SmallNavbar = () => {
                     <div className='catalogue-search'>
                         <AiOutlineSearch fontSize={30} />
                     </div>
-                    <div className='catalogue-box'>
+                    <Link to={'/cartItem'} className='catalogue-box'>
                         <AiOutlineShopping fontSize={30} />
-                    </div>
+                    </Link>
                     <div className='catalogue-box-count-product'><p>3</p></div>
                 </div>
 

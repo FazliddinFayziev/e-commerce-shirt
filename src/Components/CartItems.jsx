@@ -9,11 +9,13 @@ import { useGlobalContext } from '../Context/context';
 // Styles
 import "../Style/cart.css";
 import SingleItem from './SingleItem';
+import { useNavigate } from 'react-router-dom';
 
 const CartItems = () => {
 
     // Global
     const { languages, cart, setCart, setActiveLanguage, activeLanguage } = useGlobalContext();
+    const navigate = useNavigate();
 
     // Local
     useEffect(() => {
@@ -29,6 +31,11 @@ const CartItems = () => {
         }
 
     }, [cart])
+
+    // Go Back
+    const handleBack = () => {
+        navigate(-1);
+    }
 
     return (
 
@@ -84,7 +91,7 @@ const CartItems = () => {
 
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
-                    <button onClick={() => setCart(false)}> <AiFillBackward className='back-icon-small' /> Back</button>
+                    <button onClick={handleBack}> <AiFillBackward className='back-icon-small' /> Back</button>
                     <button>Continue</button>
                 </div>
             </div>

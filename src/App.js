@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Home, Error, Catalogue, Product } from "./Pages";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, Link } from "react-router-dom";
 import { CartItems } from "./Components";
 import { useGlobalContext } from "./Context/context";
 import { GiShoppingBag } from "react-icons/gi";
+import pathCart from "./Functions/functions";
 
 function App() {
   const { setCart } = useGlobalContext();
+  const location = useLocation();
+  const { pathname } = location
+
+  // Functions
+
+  useEffect(() => {
+    pathCart(pathname, setCart);
+  }, [pathname])
+
+
   return (
     <>
 
@@ -27,9 +38,9 @@ function App() {
 
       {/* Fixed Card to open CardItems card */}
 
-      <div onClick={() => setCart(true)} className='fixed-card'>
+      <Link to={"/cartItem"} className='fixed-card'>
         <GiShoppingBag fontSize={35} />
-      </div>
+      </Link>
 
     </>
   );

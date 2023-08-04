@@ -145,6 +145,8 @@
 
 .catalogue-box {
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
 }
 
 .all-clothes {

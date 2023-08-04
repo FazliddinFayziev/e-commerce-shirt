@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
+// redux related
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSingleProduct } from '../Container/singleProductSlice';
+import { useParams } from 'react-router-dom';
+
 const ProductInfo = () => {
+
+    const { productId } = useParams();
+
+    // redux related
+    // redux related
+    const { loading, singleProduct, error } = useSelector((state) => state.singleProduct);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchSingleProduct(productId))
+    }, [])
+
+    useEffect(() => {
+        console.log(singleProduct)
+    }, [singleProduct])
+
+    // Main
     return (
         <>
 
