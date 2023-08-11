@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 // redux related
@@ -9,10 +9,12 @@ import { useParams } from 'react-router-dom';
 const ProductInfo = () => {
 
     const { productId } = useParams();
+    const [activeImg, setActiveImg] = useState('');
+
 
     // redux related
-    // redux related
     const { loading, singleProduct, error } = useSelector((state) => state.singleProduct);
+    const { category, colors, images, name, desceng, descuz, descru, price, size } = singleProduct;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,6 +23,7 @@ const ProductInfo = () => {
 
     useEffect(() => {
         console.log(singleProduct)
+        setActiveImg(images[0])
     }, [singleProduct])
 
     // Main
@@ -53,20 +56,18 @@ const ProductInfo = () => {
                 <div className='part-1'>
 
                     <div className='all-images-of-product'>
-                        <div className='image-container'>
-                            <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-info" />
-                        </div>
-                        <div className='image-container'>
-                            <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-info" />
-                        </div>
-                        <div className='image-container'>
-                            <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-info" />
-                        </div>
+                        {images.map((image) => {
+                            return (
+                                <div onClick={() => setActiveImg(image)} className={`image-container ${image === activeImg && "image-container-active-image"}`}>
+                                    <img src={image} alt="product-info" />
+                                </div>
+                            )
+                        })}
                     </div>
 
                     <div className='part-one-container-img'>
                         <div className='product-image'>
-                            <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-image" />
+                            <img src={images && activeImg} alt="product-image" />
                         </div>
                     </div>
 
@@ -81,14 +82,14 @@ const ProductInfo = () => {
                         {/* ABOUT PRODUCT */}
 
                         <div className='part-two-container'>
-                            <p className='part-two-category'>Humble</p>
-                            <p className='part-two-name'>AWS-Developers T-Shirt</p>
-                            <p className='part-two-price'>120 000 UZS</p>
+                            <p className='part-two-category'>{category}</p>
+                            <p className='part-two-name'>{name}</p>
+                            <p className='part-two-price'>{price} UZS</p>
                         </div>
 
                         <div className='part-two-container'>
                             <p className='part-two-description'>Description:</p>
-                            <p className='part-two-text'>The lorem ipsum gets its name from the Latin phrase Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.</p>
+                            <p className='part-two-text'>{descuz}</p>
                         </div>
 
                         {/* BUTTONS */}
