@@ -96,8 +96,8 @@ const Slider = () => {
                 <div data-aos="fade-up" data-aos-easing="linear"
                     data-aos-duration="1000" className='limited'>
                     <h3>{slidesData[currentSlide].number}</h3>
-                    <p className='edition'>Limited edition</p>
-                    <p className='programming-shirt'>Programming Shirt</p>
+                    <p className='edition'>#Hello-World</p>
+                    <p className='programming-shirt'>Programming T-Shirts</p>
                 </div>
 
                 {/* Show Now Button */}

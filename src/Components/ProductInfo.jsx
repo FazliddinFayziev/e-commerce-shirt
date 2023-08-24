@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useParams } from 'react-router-dom';
+import SmallLoading from './SmallLoading';
 
-// redux related
+// redux related imports
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../Container/singleProductSlice';
-import { useParams } from 'react-router-dom';
+
+// card Items functions
+import { addToCart, removeFromCart, updateQuantity } from '../Container/cartSlice';
 
 const ProductInfo = () => {
 
     const { productId } = useParams();
     const [activeImg, setActiveImg] = useState('');
+    const [count, setCount] = useState(1);
 
 
     // redux related
@@ -22,9 +27,31 @@ const ProductInfo = () => {
     }, [])
 
     useEffect(() => {
-        console.log(singleProduct)
-        setActiveImg(images[0])
-    }, [singleProduct])
+        setActiveImg(images && images.length > 0 ? images[0] : '');
+    }, [singleProduct]);
+
+
+    // ADD PRODUCT TO CARD
+    const addItemToCart = () => {
+        const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
+        dispatch(addToCart(newItem));
+    };
+
+    // UPDATE PRODUCT 
+    const updateItemQuantity = () => {
+        setCount(count + 1);
+    };
+
+    // Decrease PRODUCT 
+    const decreseItemQuantity = () => {
+        if (count > 1) {
+            setCount(count - 1);
+        }
+    };
+
+    if (loading) {
+        return <SmallLoading />
+    }
 
     // Main
     return (
@@ -56,13 +83,15 @@ const ProductInfo = () => {
                 <div className='part-1'>
 
                     <div className='all-images-of-product'>
-                        {images.map((image) => {
-                            return (
-                                <div onClick={() => setActiveImg(image)} className={`image-container ${image === activeImg && "image-container-active-image"}`}>
-                                    <img src={image} alt="product-info" />
-                                </div>
-                            )
-                        })}
+                        {images && images.length > 0 && images.map((image) => (
+                            <div
+                                key={image}
+                                onClick={() => setActiveImg(image)}
+                                className={`image-container ${image === activeImg && "image-container-active-image"}`}
+                            >
+                                <img src={image} alt="product-info" />
+                            </div>
+                        ))}
                     </div>
 
                     <div className='part-one-container-img'>
@@ -97,28 +126,32 @@ const ProductInfo = () => {
                         <div className='product-buttons-container'>
 
                             <div className='product-buttons'>
-                                <button>
-                                    <AiOutlinePlus fontSize={20} />
-                                </button>
-                                <p>0</p>
-                                <button>
+                                <button onClick={decreseItemQuantity}>
                                     <AiOutlineMinus fontSize={20} />
+                                </button>
+                                <p>{count}</p>
+                                <button onClick={updateItemQuantity}>
+                                    <AiOutlinePlus fontSize={20} />
                                 </button>
                             </div>
 
                             <div className='size'>
                                 <select name="" id="">
-                                    <option value="">S</option>
-                                    <option value="">M</option>
-                                    <option value="">L</option>
-                                    <option value="">XS</option>
-                                    <option value="">XM</option>
-                                    <option value="">XL</option>
-                                    <option value="">XXL</option>
+                                    {size && size.length && size.map((single_size, index) => {
+                                        return (
+                                            <option key={index} value="">{single_size}</option>
+                                        )
+                                    })}
+
                                 </select>
                             </div>
 
                         </div>
+
+                        <div onClick={addItemToCart} className='add__to__card'>
+                            <button>Add to Card</button>
+                        </div>
+
                     </div>
 
                     {/* ADDITIONAL LINE AND JUST SIMPLE DESIGN OF PAGE FOR LARGE DIVICES */}

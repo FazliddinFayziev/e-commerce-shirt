@@ -1,12 +1,34 @@
 import React from 'react';
 
+// redux related
+import { useDispatch } from 'react-redux';
+import { removeFromCart, updateQuantity, decreaseQuantity } from '../Container/cartSlice';
+
 // Icons
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { FcNext } from "react-icons/fc";
 
 // Main function
 
-const SingleItem = () => {
+const SingleItem = ({ item }) => {
+
+    const dispatch = useDispatch();
+
+    // UpdateItemQuantity
+    const updateItemQuantity = (itemId) => {
+        dispatch(updateQuantity({ itemId }));
+    };
+
+    // DecreaseItemQuantity
+    const decreaseItemQuantity = (itemId) => {
+        dispatch(decreaseQuantity({ itemId }));
+    }
+
+    // removeItemFromCart
+    const revomeItemFromCart = (itemId) => {
+        dispatch(removeFromCart({ itemId }));
+    }
+
     return (
         <>
 
@@ -15,7 +37,7 @@ const SingleItem = () => {
             <div className='single-cart'>
                 {/* Close Icon */}
 
-                <div className='close-cart-icon'>
+                <div onClick={() => revomeItemFromCart(item.id)} className='close-cart-icon'>
                     <AiOutlineClose fontSize={25} />
                 </div>
 
@@ -24,15 +46,15 @@ const SingleItem = () => {
                     {/* Product Image */}
 
                     <div className='products-card-image'>
-                        <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-image" />
+                        <img src={item.image} alt="product-image" />
                     </div>
 
                     {/* Product Information */}
 
                     <div className='product-card-description'>
-                        <h3>AWS T-Shirt</h3>
-                        <p>Humble</p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, sequi?</p>
+                        <h3>{item.name}</h3>
+                        <p>{item.category}</p>
+                        <p>{item.description}</p>
                     </div>
 
                     {/* Quantity Information */}
@@ -40,12 +62,12 @@ const SingleItem = () => {
                     <div className='quantity'>
                         <p className='quantity-title'>Quantity:</p>
                         <div className='product-card-buttons'>
-                            <button>
-                                <AiOutlinePlus fontSize={20} />
-                            </button>
-                            <p>0</p>
-                            <button>
+                            <button onClick={() => decreaseItemQuantity(item.id)}>
                                 <AiOutlineMinus fontSize={20} />
+                            </button>
+                            <p>{item.quantity}</p>
+                            <button onClick={() => updateItemQuantity(item.id)}>
+                                <AiOutlinePlus fontSize={20} />
                             </button>
                         </div>
                     </div>
@@ -56,13 +78,11 @@ const SingleItem = () => {
                         <p className='size-title'>Size:</p>
                         <div className='size-card'>
                             <select name="" id="">
-                                <option value="">S</option>
-                                <option value="">M</option>
-                                <option value="">L</option>
-                                <option value="">XS</option>
-                                <option value="">XM</option>
-                                <option value="">XL</option>
-                                <option value="">XXL</option>
+                                {item.size && item.size.length > 0 && item.size.map((single_size, index) => {
+                                    return (
+                                        <option key={index} value="">{single_size}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                     </div>
@@ -71,7 +91,7 @@ const SingleItem = () => {
 
                     <div className='price-cart'>
                         <p className='price-title'>Price:</p>
-                        <h3>20 000 UZS</h3>
+                        <h3>{item.price * item.quantity} UZS</h3>
                     </div>
 
                 </div>
@@ -82,51 +102,49 @@ const SingleItem = () => {
             <div className='small-cart'>
                 <div className='small-single-cart'>
 
-                    <div className='close-icon-small-cart'>
+                    <div onClick={() => revomeItemFromCart(item.id)} className='close-icon-small-cart'>
                         <AiOutlineClose fontSize={15} />
                     </div>
 
                     {/* Image  */}
 
                     <div className='small-single-project-image'>
-                        <img src="https://res.cloudinary.com/djijmzccq/image/upload/v1685870848/node-small_shyobp.jpg" alt="product-image" />
+                        <img src={item.image} alt="product-image" />
                     </div>
 
                     {/* PRODUCT TITLE */}
 
                     <div className='small-cart-title'>
-                        <p>AWS T-Shirt</p>
+                        <p>{item.name}</p>
                         <div className='small-cart-size'>
                             <select name="" id="">
-                                <option value="">S</option>
-                                <option value="">M</option>
-                                <option value="">L</option>
-                                <option value="">XS</option>
-                                <option value="">XM</option>
-                                <option value="">XL</option>
-                                <option value="">XXL</option>
+                                {item.size && item.size.length > 0 && item.size.map((single_size, index) => {
+                                    return (
+                                        <option key={index} value="">{single_size}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                         <div>
                             <p className='small-cart-price'>
-                                200 000 UZS
+                                {item.price * item.quantity} UZS
                             </p>
                         </div>
                     </div>
 
                     {/* Category */}
 
-                    <div className='category-small-cart-title'>Humble</div>
+                    <div className='category-small-cart-title'>{item.category}</div>
 
 
                     {/* Counting product numbers */}
 
                     <div className='play-with-small-cart'>
-                        <button className='increment'><FcNext /></button>
+                        <button onClick={() => updateItemQuantity(item.id)} className='increment'><FcNext /></button>
                         <div className='display-small-number'>
-                            <p>0</p>
+                            <p>{item.quantity}</p>
                         </div>
-                        <button className='decrement'><FcNext /></button>
+                        <button onClick={() => decreaseItemQuantity(item.id)} className='decrement'><FcNext /></button>
                     </div>
 
                 </div>

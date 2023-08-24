@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 // Icons
 import { AiFillBackward } from "react-icons/ai";
+import { BsFillBasket3Fill } from "react-icons/bs";
 
 // Global Imports
 import { useGlobalContext } from '../Context/context';
@@ -10,12 +11,16 @@ import { useGlobalContext } from '../Context/context';
 import "../Style/cart.css";
 import SingleItem from './SingleItem';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CartItems = () => {
 
     // Global
-    const { languages, cart, setCart, setActiveLanguage, activeLanguage } = useGlobalContext();
+    const { languages, cart, setActiveLanguage, activeLanguage } = useGlobalContext();
     const navigate = useNavigate();
+
+    // redux related
+    const { cartItems } = useSelector((state) => state.cartItems);
 
     // Local
     useEffect(() => {
@@ -31,6 +36,10 @@ const CartItems = () => {
         }
 
     }, [cart])
+
+    useEffect(() => {
+        cartItems && console.log(cartItems)
+    }, [cartItems])
 
     // Go Back
     const handleBack = () => {
@@ -83,10 +92,23 @@ const CartItems = () => {
             {/* Item PRODUCTS of CARD  */}
 
             <div className='cartItems-all'>
-                <SingleItem />
-                <SingleItem />
-                <SingleItem />
-                <SingleItem />
+                {cartItems.length > 0 ? (
+                    cartItems.map((item, index) => (
+                        <SingleItem key={index} item={item} />
+                    ))
+                ) : (
+                    <div className='there__is__no__product'>
+                        <div>
+                            <div className='no_product_icon'>
+                                <BsFillBasket3Fill fontSize={40} />
+                            </div>
+                            <p>
+                                There is no Product yet
+                            </p>
+                        </div>
+                    </div>
+                )}
+
             </div>
 
             <div className='center-next-cart-buttons'>

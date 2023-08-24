@@ -9,12 +9,16 @@
 }
 
 .main-loading {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
     background-color: var(--conainer);
 }
@@ -67,6 +71,76 @@
 }
 
 .block:nth-child(3) {
+    background-color: var(--block-3);
+    width: calc(var(--size) / 3);
+    height: calc(var(--size) / 3);
+    left: calc(var(--size) * 5 / 2);
+    z-index: 8;
+    animation: jump2 var(--duration) linear infinite;
+}
+
+
+/* SMALL LOADING */
+
+.small-main-loading {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.small-container-loading {
+    display: flex;
+    width: calc(var(--size) * 5);
+    height: calc(var(--size) * 8);
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+
+.small-block {
+    position: absolute;
+    bottom: var(--size);
+    left: calc(var(--size) * 2);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 5px;
+    animation: jump var(--duration) linear infinite;
+}
+
+.small-block:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--size) / 8);
+    left: 45%;
+    width: calc(var(--size) * 2 / 3);
+    height: calc(var(--size) * 2 / 3);
+    border-radius: 50%;
+    border-top: 4px solid var(--block);
+    border-left: 4px solid var(--block);
+    transform: rotate(135deg);
+}
+
+.small-block:nth-child(1) {
+    background-color: var(--block);
+    z-index: 10;
+}
+
+.small-block:nth-child(2) {
+    background-color: var(--block-2);
+    width: calc(var(--size) / 2);
+    height: calc(var(--size) / 2);
+    left: calc(var(--size) * 2.2);
+    z-index: 9;
+    animation: jump1 var(--duration) linear infinite;
+}
+
+.small-block:nth-child(3) {
     background-color: var(--block-3);
     width: calc(var(--size) / 3);
     height: calc(var(--size) / 3);

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 // redux related
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../Container/productSlice';
+import SmallLoading from './SmallLoading';
 
 const AllClothes = () => {
 
@@ -23,12 +24,12 @@ const AllClothes = () => {
 
     // Main
 
+    if (loading) {
+        return <SmallLoading />
+    }
+
     return (
         <>
-            {/* All clothes */}
-
-            {loading && (<div>Loading ...</div>)}
-
             {!loading && error ? (<div>Error: {error}</div>) : null}
             {!loading && products.length ? (
                 <div className='all-clothes'>
