@@ -6,8 +6,11 @@ import { useGlobalContext } from "./Context/context";
 import { GiShoppingBag } from "react-icons/gi";
 import pathCart from "./Functions/functions";
 
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+
 function App() {
-  const { setCart } = useGlobalContext();
+  const { setCart, show } = useGlobalContext();
   const location = useLocation();
   const { pathname } = location
 
@@ -24,6 +27,16 @@ function App() {
       {/* CartItems */}
 
       <CartItems />
+
+      {/* Alert Card */}
+      {show && (
+        <Stack className="alert__cart" sx={{ width: '50%' }} spacing={2}>
+          {/* <Alert severity="error">This is an error alert — check it out!</Alert> */}
+          {/* <Alert severity="warning">This is a warning alert — check it out!</Alert> */}
+          {/* <Alert severity="info">This is an info alert — check it out!</Alert> */}
+          <Alert severity="success">Product is added Successfully</Alert>
+        </Stack>
+      )}
 
       {/* Routes */}
 

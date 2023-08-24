@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useParams } from 'react-router-dom';
 import SmallLoading from './SmallLoading';
+import { useGlobalContext } from '../Context/context';
 
 // redux related imports
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +12,9 @@ import { fetchSingleProduct } from '../Container/singleProductSlice';
 import { addToCart, removeFromCart, updateQuantity } from '../Container/cartSlice';
 
 const ProductInfo = () => {
+
+    // Global
+    const { setShow } = useGlobalContext();
 
     const { productId } = useParams();
     const [activeImg, setActiveImg] = useState('');
@@ -35,6 +39,7 @@ const ProductInfo = () => {
     const addItemToCart = () => {
         const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
         dispatch(addToCart(newItem));
+        setShow(true)
     };
 
     // UPDATE PRODUCT 

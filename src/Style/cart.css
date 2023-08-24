@@ -332,6 +332,7 @@ body.disable-cart-scroll {
         align-items: center;
         background-color: var(--blue);
         color: #fff;
+        cursor: pointer;
     }
 
     .small-single-project-image {

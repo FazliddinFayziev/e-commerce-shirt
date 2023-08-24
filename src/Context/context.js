@@ -8,6 +8,9 @@ export const AppProvider = ({ children }) => {
     // Change navbar
     const [nav, setNav] = useState(false);
 
+    // Show Cart
+    const [show, setShow] = useState(false);
+
     // Languages
     const languages = ["Eng", "Ru", "Uz"];
     const [activeLanguage, setActiveLanguage] = useState("Eng");
@@ -19,6 +22,9 @@ export const AppProvider = ({ children }) => {
 
         // Change navbar
         nav, setNav,
+
+        // Show Cart
+        show, setShow,
 
         // Languages
         languages,
