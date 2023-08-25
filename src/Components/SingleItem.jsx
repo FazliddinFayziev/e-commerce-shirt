@@ -7,10 +7,13 @@ import { removeFromCart, updateQuantity, decreaseQuantity } from '../Container/c
 // Icons
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { FcNext } from "react-icons/fc";
+import { useGlobalContext } from '../Context/context';
 
 // Main function
 
 const SingleItem = ({ item }) => {
+
+    const { setShow, setCartMessage } = useGlobalContext();
 
     const dispatch = useDispatch();
 
@@ -27,6 +30,8 @@ const SingleItem = ({ item }) => {
     // removeItemFromCart
     const revomeItemFromCart = (itemId) => {
         dispatch(removeFromCart({ itemId }));
+        setCartMessage({ type: 'info', msg: 'Product is deleted successfully' })
+        setShow(true)
     }
 
     return (

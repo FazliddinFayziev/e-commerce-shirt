@@ -18,6 +18,9 @@ export const AppProvider = ({ children }) => {
     // cartItem Logic
     const [cart, setCart] = useState(false);
 
+    // Cart Message
+    const [cartMessage, setCartMessage] = useState({ type: 'success', msg: '' })
+
     return <AppContext.Provider value={{
 
         // Change navbar
@@ -25,6 +28,9 @@ export const AppProvider = ({ children }) => {
 
         // Show Cart
         show, setShow,
+
+        // Cart Message
+        cartMessage, setCartMessage,
 
         // Languages
         languages,

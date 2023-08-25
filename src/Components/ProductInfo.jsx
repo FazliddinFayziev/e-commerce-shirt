@@ -14,7 +14,7 @@ import { addToCart, removeFromCart, updateQuantity } from '../Container/cartSlic
 const ProductInfo = () => {
 
     // Global
-    const { setShow } = useGlobalContext();
+    const { setShow, setCartMessage } = useGlobalContext();
 
     const { productId } = useParams();
     const [activeImg, setActiveImg] = useState('');
@@ -39,6 +39,7 @@ const ProductInfo = () => {
     const addItemToCart = () => {
         const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
         dispatch(addToCart(newItem));
+        setCartMessage({ type: 'success', msg: 'Product is added successfully' })
         setShow(true)
     };
 
