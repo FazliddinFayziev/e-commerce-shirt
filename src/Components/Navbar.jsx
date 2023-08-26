@@ -18,9 +18,9 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className='navbar-box'>
-                    <div className='account'>
+                    <Link to={'/account'} className='account'>
                         <p>Account</p>
-                    </div>
+                    </Link>
                     <Link to={'/cartItem'} className='box'>
                         <AiOutlineShopping fontSize={30} />
                     </Link>

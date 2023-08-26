@@ -18,3 +18,4 @@ export { default as MostPoppular } from "./MostPopular";
 export { default as LikeProducts } from "./LikeProducts";
 export { default as ShippingInfo } from "./ShippingInfo";
 export { default as SmallLoading } from "./SmallLoading";
+export { default as AccountNavbar } from "./AccountNavbar";
