@@ -62,8 +62,7 @@ const Filter = (
                             <div className='color-categories'>
                                 <div className='p'>All</div>
                                 <div className='color-categories-main'>
-                                    <div style={{ backgroundColor: "red" }} className='single-color-active'></div>
-                                    <div style={{ backgroundColor: "#000" }} className='single-color'></div>
+                                    <div style={{ backgroundColor: "#000" }} className='single-color-active'></div>
                                     <div style={{ backgroundColor: "#fff" }} className='single-color'></div>
                                 </div>
                             </div>

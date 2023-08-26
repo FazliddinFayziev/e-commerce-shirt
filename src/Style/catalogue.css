@@ -307,6 +307,20 @@
     font-weight: 600;
 }
 
+.no__products__yet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+.no__products__yet__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+}
+
 @media screen and (max-width: 1024px) {
     .single-cloth {
         width: 200px;

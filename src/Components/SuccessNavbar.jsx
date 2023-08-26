@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
 
-const AccountNavbar = () => {
+const SuccessNavbar = () => {
 
     // Global
 
@@ -31,28 +31,8 @@ const AccountNavbar = () => {
                     ))}
                 </ul>
             </nav>
-
-            {/* Second Navbar */}
-
-            <div className='home-catalogue-nav'>
-
-                <div className='navbar-one'>
-                    <Link style={{ textDecoration: 'none' }} to={'/'}>
-                        <p className='no-active'>Home</p>
-                    </Link>
-                    <div className='catalogue-dot'>
-                        <p className='active'>Account</p>
-                        <div className='dot'></div>
-                    </div>
-                </div>
-
-                <div className='catalogue-two'>
-                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>25</span> Orders</p>
-                </div>
-
-            </div>
         </>
     )
 }
 
-export default AccountNavbar
+export default SuccessNavbar

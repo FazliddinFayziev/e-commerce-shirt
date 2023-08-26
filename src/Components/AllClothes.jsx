@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { popular } from '../Data/data';
+import { MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 // redux related
@@ -55,7 +56,14 @@ const AllClothes = () => {
                     })}
                 </div>
             ) : (
-                <div>No products Yet</div>
+                <div className='no__products__yet'>
+                    <div>
+                        <div className='no__products__yet__icon'>
+                            <MdProductionQuantityLimits fontSize={50} />
+                        </div>
+                        <h3>No Products Yet</h3>
+                    </div>
+                </div>
             )}
         </>
     )

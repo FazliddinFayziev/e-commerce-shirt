@@ -76,7 +76,7 @@ const CartItems = () => {
                     <h3>Your Cart</h3>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <p className='cart-items-number'>3 items</p>
+                    <p className='cart-items-number'>{cartItems.length} items</p>
                 </div>
                 <div className='total-card-navbar-tems'>
                     <h3><span className='total-items-number'>Total: </span> {totalPrice} UZS</h3>
