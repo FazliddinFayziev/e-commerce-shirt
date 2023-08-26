@@ -22,9 +22,6 @@ const AlertCart = () => {
             {/* Alert Card */}
             {show && (
                 <Stack className="alert__cart" sx={{ width: '50%', height: '100px' }} spacing={2}>
-                    {/* <Alert severity="error">This is an error alert — check it out!</Alert> */}
-                    {/* <Alert severity="warning">This is a warning alert — check it out!</Alert> */}
-                    {/* <Alert severity="info">This is an info alert — check it out!</Alert> */}
                     <Alert severity={type}>{msg}</Alert>
                 </Stack>
             )}

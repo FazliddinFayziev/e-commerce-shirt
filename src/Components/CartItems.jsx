@@ -10,7 +10,7 @@ import { useGlobalContext } from '../Context/context';
 // Styles
 import "../Style/cart.css";
 import SingleItem from './SingleItem';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const CartItems = () => {
@@ -20,7 +20,7 @@ const CartItems = () => {
     const navigate = useNavigate();
 
     // redux related
-    const { cartItems } = useSelector((state) => state.cartItems);
+    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
 
     // Local
     useEffect(() => {
@@ -79,7 +79,7 @@ const CartItems = () => {
                     <p className='cart-items-number'>3 items</p>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <h3><span className='total-items-number'>Total: </span> 350 000 000 UZS</h3>
+                    <h3><span className='total-items-number'>Total: </span> {totalPrice} UZS</h3>
                 </div>
             </div>
 
@@ -114,7 +114,13 @@ const CartItems = () => {
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
                     <button onClick={handleBack}> <AiFillBackward className='back-icon-small' /> Back</button>
-                    <button>Continue</button>
+                    {
+                        cartItems.length > 0 && (
+                            <Link to={'/shipping'} style={{ textDecoration: 'none' }}>
+                                <button>Continue</button>
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
 

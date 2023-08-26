@@ -96,7 +96,7 @@ const SingleItem = ({ item }) => {
 
                     <div className='price-cart'>
                         <p className='price-title'>Price:</p>
-                        <h3>{item.price * item.quantity} UZS</h3>
+                        <h3>{item.price} UZS</h3>
                     </div>
 
                 </div>
@@ -132,7 +132,7 @@ const SingleItem = ({ item }) => {
                         </div>
                         <div>
                             <p className='small-cart-price'>
-                                {item.price * item.quantity} UZS
+                                {item.price} UZS
                             </p>
                         </div>
                     </div>

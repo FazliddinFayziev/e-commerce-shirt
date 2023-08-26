@@ -1,25 +1,36 @@
 import React, { useEffect } from "react";
 import { Home, Error, Catalogue, Product } from "./Pages";
 import { Routes, Route, useLocation, Link } from "react-router-dom";
-import { AlertCart, CartItems } from "./Components";
+import { AlertCart, CartItems, ShippingInfo } from "./Components";
 import { useGlobalContext } from "./Context/context";
 import { GiShoppingBag } from "react-icons/gi";
-import pathCart from "./Functions/functions";
+import { pathCart, pathShipping } from "./Functions/functions";
+
 
 function App() {
-  const { setCart } = useGlobalContext();
+  const { setCart, setShip } = useGlobalContext();
   const location = useLocation();
   const { pathname } = location
 
   // Functions
 
+  // CartItems Cart
   useEffect(() => {
     pathCart(pathname, setCart);
+  }, [pathname])
+
+  // Shipping Cart
+  useEffect(() => {
+    pathShipping(pathname, setShip);
   }, [pathname])
 
 
   return (
     <>
+
+      {/* Shipping Cart */}
+
+      <ShippingInfo />
 
       {/* CartItems */}
 

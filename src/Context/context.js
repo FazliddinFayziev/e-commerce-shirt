@@ -11,6 +11,9 @@ export const AppProvider = ({ children }) => {
     // Show Cart
     const [show, setShow] = useState(false);
 
+    // Shipping Cart
+    const [ship, setShip] = useState(false);
+
     // Languages
     const languages = ["Eng", "Ru", "Uz"];
     const [activeLanguage, setActiveLanguage] = useState("Eng");
@@ -28,6 +31,9 @@ export const AppProvider = ({ children }) => {
 
         // Show Cart
         show, setShow,
+
+        // Shipping Cart
+        ship, setShip,
 
         // Cart Message
         cartMessage, setCartMessage,
