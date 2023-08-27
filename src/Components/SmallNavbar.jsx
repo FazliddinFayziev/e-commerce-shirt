@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
 import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
+import { useSelector } from 'react-redux';
 
 const SmallNavbar = () => {
 
     // Global
 
     const { languages, activeLanguage, setActiveLanguage } = useGlobalContext();
+    const { totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     // Main 
 
@@ -57,7 +59,7 @@ const SmallNavbar = () => {
                     <Link to={'/cartItem'} className='catalogue-box'>
                         <AiOutlineShopping fontSize={30} />
                     </Link>
-                    <div className='catalogue-box-count-product'><p>3</p></div>
+                    <div className='catalogue-box-count-product'><p>{totalNumberOfItems}</p></div>
                 </div>
 
             </div>

@@ -14,6 +14,7 @@ import "../Style/footer.css";
 // Components
 
 import { AllClothes, Filter, Loading, SmallFooter } from '../Components';
+import { useSelector } from 'react-redux';
 
 
 const Catalogue = () => {
@@ -31,6 +32,7 @@ const Catalogue = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState("All");
     const [activeOptions, setActiveOptions] = useState("All");
+    const { totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     useEffect(() => {
 
@@ -133,7 +135,7 @@ const Catalogue = () => {
                                 <Link to={'/cartItem'} className='catalogue-box'>
                                     <AiOutlineShopping fontSize={30} />
                                 </Link>
-                                <div className='catalogue-box-count-product'><p>3</p></div>
+                                <div className='catalogue-box-count-product'><p>{totalNumberOfItems}</p></div>
                             </div>
 
                         </div>

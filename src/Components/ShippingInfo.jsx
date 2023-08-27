@@ -3,12 +3,52 @@ import '../Style/ship.css';
 import { useGlobalContext } from '../Context/context';
 import { useNavigate } from 'react-router-dom';
 import { AiFillBackward } from "react-icons/ai";
+import { useSelector } from 'react-redux';
+import axios from '../api/axios';
+
 
 const ShippingInfo = () => {
+
+    // redux related
+    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
+
+    // Global
+    const { setCartMessage, setShow } = useGlobalContext();
+
+
+    // Form Target
+    const [name, setName] = useState('');
+    const [number, setNumber] = useState('');
+    const [district, setDistrict] = useState('');
+    const [address, setAddress] = useState('');
 
     const { ship, languages, setActiveLanguage, activeLanguage } = useGlobalContext();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const cartData = {
+        cardItems: cartItems,
+        totalPrice: totalPrice,
+        userInfo: {
+            userName: name,
+            phoneNumber: number,
+            avenue: district,
+            address: address,
+        },
+    };
+
+    const postCart = async (cartData) => {
+        try {
+            if (cartItems > 0 && name !== "" && number !== "" && district !== "" && address !== "") {
+                const data = await axios.post('/postcard', cartData);
+            } else {
+                setCartMessage({ type: 'error', msg: 'Please fill all inputs' })
+                setShow(true)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // Local
     useEffect(() => {
@@ -66,22 +106,33 @@ const ShippingInfo = () => {
                     <div className='shipping__box'>
                         <div className='shipping__input'>
                             <label htmlFor="">First Name</label>
-                            <input type="text" />
+                            <input onChange={(e) => setName(e.target.value)} type="text" />
                         </div>
                         <div className='shipping__input'>
                             <label htmlFor="">Phone Number</label>
-                            <input type="number" />
+                            <input onChange={(e) => setNumber(e.target.value)} type="number" />
                         </div>
                         <div className='shipping__input'>
                             <label htmlFor="">District</label>
-                            <select name="" id="">
-                                <option value="">Sergeli</option>
-                                <option value="">Yangi Hayot</option>
+                            <select onChange={(e) => setDistrict(e.target.value)} name="" id="">
+                                <option value="">Choose</option>
+                                <option value="Uchtepa">Uchtepa</option>
+                                <option value="Bektemir">Bektemir</option>
+                                <option value="Mirzo-Ulugbek">Mirzo-Ulugbek</option>
+                                <option value="Mirabad">Mirabad</option>
+                                <option value="Sergeli">Sergeli</option>
+                                <option value="Almazar">Almazar</option>
+                                <option value="Chilanzar">Chilanzar</option>
+                                <option value="Shaikhontohur">Shaikhontohur</option>
+                                <option value="Yunusabad">Yunusabad</option>
+                                <option value="Yakkasaray">Yakkasaray</option>
+                                <option value="Yashnabad">Yashnabad</option>
+                                <option value="Yangihayot">Yangihayot</option>
                             </select>
                         </div>
                         <div className='shipping__input'>
                             <label htmlFor="">Address</label>
-                            <input type="text" />
+                            <input onChange={(e) => setAddress(e.target.value)} type="text" />
                         </div>
                     </div>
                 )}
@@ -91,7 +142,7 @@ const ShippingInfo = () => {
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
                     <button onClick={handleBack}><AiFillBackward className='back-icon-small' /> Back</button>
-                    <button>Continue</button>
+                    <button onClick={() => postCart(cartData)}>Order</button>
                 </div>
             </div>
 

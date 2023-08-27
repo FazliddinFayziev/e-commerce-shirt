@@ -100,7 +100,7 @@ body {
 
 .alert__cart {
     position: fixed;
-    z-index: 100;
+    z-index: 250;
     top: 20px;
     right: 20px;
 }

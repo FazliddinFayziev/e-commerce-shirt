@@ -3,9 +3,11 @@ import { TiThMenu } from "react-icons/ti";
 import { AiOutlineSearch, AiOutlineShopping } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
     const { setNav } = useGlobalContext();
+    const { totalNumberOfItems } = useSelector((state) => state.cartItems)
     return (
         <>
             <div className='navbar-container'>
@@ -24,7 +26,7 @@ const Navbar = () => {
                     <Link to={'/cartItem'} className='box'>
                         <AiOutlineShopping fontSize={30} />
                     </Link>
-                    <div className='count-product'><p>3</p></div>
+                    <div className='count-product'><p>{totalNumberOfItems}</p></div>
                 </div>
             </div>
         </>
