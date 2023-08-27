@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../Container/singleProductSlice';
 
 // card Items functions
-import { addToCart, removeFromCart, updateQuantity } from '../Container/cartSlice';
+import { addToCart } from '../Container/cartSlice';
+import { formatPrice } from '../Functions/functions';
 
 const ProductInfo = () => {
 
@@ -119,7 +120,7 @@ const ProductInfo = () => {
                         <div className='part-two-container'>
                             <p className='part-two-category'>{category}</p>
                             <p className='part-two-name'>{name}</p>
-                            <p className='part-two-price'>{price} UZS</p>
+                            <p className='part-two-price'>{price && formatPrice(price)} UZS</p>
                         </div>
 
                         <div className='part-two-container'>

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../Container/productSlice';
 import SmallLoading from './SmallLoading';
+import { formatPrice } from '../Functions/functions';
 
 const AllClothes = () => {
 
@@ -48,7 +49,7 @@ const AllClothes = () => {
                                     <div className='shirt-info'>
                                         <p className='category'>{product.category}</p>
                                         <p className='title'>{product.name}</p>
-                                        <p className='price'>{product.price} UZS</p>
+                                        <p className='price'>{formatPrice(product.price)} UZS</p>
                                     </div>
                                 </div>
                             </div>

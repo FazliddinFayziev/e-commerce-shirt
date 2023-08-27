@@ -8,6 +8,7 @@ import { removeFromCart, updateQuantity, decreaseQuantity } from '../Container/c
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { FcNext } from "react-icons/fc";
 import { useGlobalContext } from '../Context/context';
+import { formatPrice } from '../Functions/functions';
 
 // Main function
 
@@ -59,7 +60,7 @@ const SingleItem = ({ item }) => {
                     <div className='product-card-description'>
                         <h3>{item.name}</h3>
                         <p>{item.category}</p>
-                        <p>{item.description}</p>
+                        <p>{item.description.slice(0, 100)}...</p>
                     </div>
 
                     {/* Quantity Information */}
@@ -96,7 +97,7 @@ const SingleItem = ({ item }) => {
 
                     <div className='price-cart'>
                         <p className='price-title'>Price:</p>
-                        <h3>{item.price} UZS</h3>
+                        <h3>{formatPrice(item.price)} UZS</h3>
                     </div>
 
                 </div>
@@ -132,7 +133,7 @@ const SingleItem = ({ item }) => {
                         </div>
                         <div>
                             <p className='small-cart-price'>
-                                {item.price} UZS
+                                {formatPrice(item.price)} UZS
                             </p>
                         </div>
                     </div>

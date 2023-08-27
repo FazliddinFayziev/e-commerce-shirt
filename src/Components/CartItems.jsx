@@ -12,6 +12,7 @@ import "../Style/cart.css";
 import SingleItem from './SingleItem';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { formatPrice } from '../Functions/functions';
 
 const CartItems = () => {
 
@@ -20,7 +21,7 @@ const CartItems = () => {
     const navigate = useNavigate();
 
     // redux related
-    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
+    const { cartItems, totalPrice, totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     // Local
     useEffect(() => {
@@ -76,10 +77,10 @@ const CartItems = () => {
                     <h3>Your Cart</h3>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <p className='cart-items-number'>{cartItems.length} items</p>
+                    <p className='cart-items-number'>{totalNumberOfItems} items</p>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <h3><span className='total-items-number'>Total: </span> {totalPrice} UZS</h3>
+                    <h3><span className='total-items-number'>Total: </span> {formatPrice(totalPrice)} UZS</h3>
                 </div>
             </div>
 

@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     cartItems: [],
-    totalPrice: 0
+    totalPrice: 0,
+    totalNumberOfItems: 0,
 };
 
 const cartSlice = createSlice({
@@ -18,9 +19,11 @@ const cartSlice = createSlice({
             if (existingItem) {
                 existingItem.quantity += newItem.quantity;
                 state.totalPrice += (newItem.price * newItem.quantity)
+                state.totalNumberOfItems += newItem.quantity;
             } else {
                 state.cartItems.push(newItem);
                 state.totalPrice += (newItem.price * newItem.quantity)
+                state.totalNumberOfItems += newItem.quantity;
             }
         },
 
@@ -29,6 +32,7 @@ const cartSlice = createSlice({
             const { itemId } = action.payload;
             const itemToDelete = state.cartItems.find(item => item.id === itemId);
             state.totalPrice -= (itemToDelete.price * itemToDelete.quantity)
+            state.totalNumberOfItems -= itemToDelete.quantity;
             state.cartItems = state.cartItems.filter(item => item.id !== itemId);
         },
 
@@ -39,6 +43,7 @@ const cartSlice = createSlice({
             if (itemToUpdate) {
                 itemToUpdate.quantity++;
                 state.totalPrice += itemToUpdate.price
+                state.totalNumberOfItems++;
             }
         },
 
@@ -50,6 +55,7 @@ const cartSlice = createSlice({
                 if (itemToUpdate.quantity > 1) {
                     itemToUpdate.quantity--;
                     state.totalPrice -= itemToUpdate.price
+                    state.totalNumberOfItems--;
                 }
             }
         },

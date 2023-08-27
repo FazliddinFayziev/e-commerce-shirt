@@ -5,10 +5,13 @@ import { AlertCart, CartItems, ShippingInfo, Success } from "./Components";
 import { useGlobalContext } from "./Context/context";
 import { GiShoppingBag } from "react-icons/gi";
 import { pathCart, pathShipping } from "./Functions/functions";
+import { useSelector } from "react-redux";
 
 
 function App() {
   const { setCart, setShip } = useGlobalContext();
+  // redux related
+  const { cartItems } = useSelector((state) => state.cartItems);
   const location = useLocation();
   const { pathname } = location
 
@@ -21,8 +24,8 @@ function App() {
 
   // Shipping Cart
   useEffect(() => {
-    pathShipping(pathname, setShip);
-  }, [pathname])
+    pathShipping(pathname, setShip, cartItems);
+  }, [pathname, cartItems])
 
 
   return (

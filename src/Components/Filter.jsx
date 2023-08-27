@@ -76,8 +76,8 @@ const Filter = (
                             <h2>Options</h2>
                             <div className='line-blue'></div>
                             <div className='filter-categories'>
-                                {options.map((option) => (
-                                    <p
+                                {options.map((option, index) => (
+                                    <p key={index}
                                         className={
                                             activeOptions === option ?
                                                 "filter-active-shop" : ""
