@@ -3,14 +3,14 @@ import '../Style/ship.css';
 import { useGlobalContext } from '../Context/context';
 import { useNavigate } from 'react-router-dom';
 import { AiFillBackward } from "react-icons/ai";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from '../api/axios';
 
 
 const ShippingInfo = () => {
 
     // redux related
-    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
+    const { cartItems, totalPrice, removeAllFromCart } = useSelector((state) => state.cartItems);
 
     // Global
     const { setCartMessage, setShow } = useGlobalContext();
@@ -25,6 +25,7 @@ const ShippingInfo = () => {
     const { ship, languages, setActiveLanguage, activeLanguage } = useGlobalContext();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const cartData = {
         cardItems: cartItems,
@@ -37,33 +38,33 @@ const ShippingInfo = () => {
         },
     };
 
+
     const postCart = async (cartData) => {
+        setLoading(true);
         try {
-            if (cartItems > 0 && name !== "" && number !== "" && district !== "" && address !== "") {
+            if (cartItems.length > 0 || name !== "" || number !== "" || district !== "" || address !== "") {
                 const data = await axios.post('/postcard', cartData);
+                setCartMessage({ type: 'success', msg: 'Your Order successfully sent' })
+                setShow(true)
+                dispatch(removeAllFromCart());
+                setName('');
+                setNumber('');
+                setDistrict('');
+                setAddress('');
+                setLoading(false);
+                console.log(data)
             } else {
-                setCartMessage({ type: 'error', msg: 'Please fill all inputs' })
+                setLoading(false);
+                setCartMessage({ type: 'error', msg: 'Fill all Inputs' })
                 setShow(true)
             }
         } catch (error) {
-            console.log(error)
+            setLoading(false);
+            setCartMessage({ type: 'error', msg: `${error}` })
+            setShow(true)
         }
     }
 
-    // Local
-    useEffect(() => {
-
-        // Diable scroll 
-        if (ship) {
-            document.body.classList.add('disable-cart-scroll');
-        }
-
-        // Enable scroll
-        if (!ship) {
-            document.body.classList.remove('disable-cart-scroll');
-        }
-
-    }, [ship])
 
     // Go Back
     const handleBack = () => {
