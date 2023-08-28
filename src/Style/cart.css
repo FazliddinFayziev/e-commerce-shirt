@@ -223,7 +223,7 @@ body.disable-cart-scroll {
 .add__to__card {
     width: 150px;
     height: 50px;
-    margin-left: 20px;
+    margin: 20px;
 }
 
 .add__to__card button {

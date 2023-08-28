@@ -4,13 +4,14 @@ import { useGlobalContext } from '../Context/context';
 import { useNavigate } from 'react-router-dom';
 import { AiFillBackward } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
+import { removeAllFromCart } from '../Container/cartSlice';
 import axios from '../api/axios';
 
 
 const ShippingInfo = () => {
 
     // redux related
-    const { cartItems, totalPrice, removeAllFromCart } = useSelector((state) => state.cartItems);
+    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
 
     // Global
     const { setCartMessage, setShow } = useGlobalContext();
@@ -38,32 +39,51 @@ const ShippingInfo = () => {
         },
     };
 
+    // Post function Logic
 
-    const postCart = async (cartData) => {
+    const postCart = async (cartData, event) => {
+        event.preventDefault();
+
         setLoading(true);
         try {
-            if (cartItems.length > 0 || name !== "" || number !== "" || district !== "" || address !== "") {
+            if (cartItems.length > 0 && name && number && district && address) {
                 const data = await axios.post('/postcard', cartData);
-                setCartMessage({ type: 'success', msg: 'Your Order successfully sent' })
-                setShow(true)
+                setCartMessage({ type: 'success', msg: 'Your Order successfully sent' });
+                setShow(true);
+
+                const orderData = {
+                    cartItems: cartData.cardItems,
+                    totalPrice: cartData.totalPrice,
+                    userInfo: {
+                        userName: name,
+                        phoneNumber: number,
+                        avenue: district,
+                        address: address,
+                    },
+                };
+                localStorage.setItem('orderData', JSON.stringify(orderData));
+
                 dispatch(removeAllFromCart());
                 setName('');
                 setNumber('');
                 setDistrict('');
                 setAddress('');
                 setLoading(false);
-                console.log(data)
+                navigate('/success')
+                console.log(data);
             } else {
                 setLoading(false);
-                setCartMessage({ type: 'error', msg: 'Fill all Inputs' })
-                setShow(true)
+                setCartMessage({ type: 'error', msg: 'Fill all Inputs' });
+                setShow(true);
             }
         } catch (error) {
             setLoading(false);
-            setCartMessage({ type: 'error', msg: `${error}` })
-            setShow(true)
+            setCartMessage({ type: 'error', msg: `${error}` });
+            setShow(true);
         }
-    }
+    };
+
+
 
 
     // Go Back
@@ -143,7 +163,7 @@ const ShippingInfo = () => {
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
                     <button onClick={handleBack}><AiFillBackward className='back-icon-small' /> Back</button>
-                    <button onClick={() => postCart(cartData)}>Order</button>
+                    <button onClick={(event) => postCart(cartData, event)}>Order</button>
                 </div>
             </div>
 

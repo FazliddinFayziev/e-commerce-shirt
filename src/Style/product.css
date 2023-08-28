@@ -283,6 +283,11 @@
     font-weight: 600;
 }
 
+.add__to__card__container {
+    display: flex;
+    align-items: center;
+}
+
 /* -------------------------- */
 /* LIKE PRODUCTS SECTION */
 /* -------------------------- */

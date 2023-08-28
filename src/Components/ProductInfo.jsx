@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SmallLoading from './SmallLoading';
 import { useGlobalContext } from '../Context/context';
 
@@ -26,6 +26,7 @@ const ProductInfo = () => {
     const { loading, singleProduct, error } = useSelector((state) => state.singleProduct);
     const { category, colors, images, name, desceng, descuz, descru, price, size } = singleProduct;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(fetchSingleProduct(productId))
@@ -35,6 +36,14 @@ const ProductInfo = () => {
         setActiveImg(images && images.length > 0 ? images[0] : '');
     }, [singleProduct]);
 
+    // Buy Now Product
+    const buyNowProduct = () => {
+        const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
+        dispatch(addToCart(newItem));
+        setCartMessage({ type: 'success', msg: 'Product is added successfully' })
+        setShow(true)
+        navigate('/cartItem')
+    };
 
     // ADD PRODUCT TO CARD
     const addItemToCart = () => {
@@ -155,8 +164,13 @@ const ProductInfo = () => {
 
                         </div>
 
-                        <div onClick={addItemToCart} className='add__to__card'>
-                            <button>Add to Card</button>
+                        <div className='add__to__card__container'>
+                            <div onClick={addItemToCart} className='add__to__card'>
+                                <button>Add to Card</button>
+                            </div>
+                            <div onClick={buyNowProduct} className='add__to__card'>
+                                <button>Buy Now</button>
+                            </div>
                         </div>
 
                     </div>

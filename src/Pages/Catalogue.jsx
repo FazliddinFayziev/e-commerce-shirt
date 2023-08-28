@@ -13,7 +13,7 @@ import "../Style/footer.css";
 
 // Components
 
-import { AllClothes, Filter, Loading, SmallFooter } from '../Components';
+import { AllClothes, Filter, SmallFooter } from '../Components';
 import { useSelector } from 'react-redux';
 
 
@@ -23,13 +23,18 @@ const Catalogue = () => {
 
     const { activeLanguage, setActiveLanguage, languages } = useGlobalContext();
 
+    // Top
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     // Local
 
     const categories = ["All", "Simple", "Humble", "Elegant"]
     const options = ["All", "Python", "Java", "React", "C#"]
 
     const [sidebar, setSidebar] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState("All");
     const [activeOptions, setActiveOptions] = useState("All");
     const { totalNumberOfItems } = useSelector((state) => state.cartItems);
@@ -48,19 +53,6 @@ const Catalogue = () => {
 
     }, [sidebar])
 
-    // setTimeOut
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2500);
-    }, [])
-
-    // Loading before start
-
-    if (isLoading) {
-        return <Loading />
-    }
 
     // Main
 
