@@ -1,10 +1,10 @@
 import React from 'react'
 import Slider from './Slider'
 
-const HerroBanner = () => {
+const HerroBanner = ({ banner }) => {
     return (
         <>
-            <Slider />
+            <Slider banner={banner} />
         </>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
 
@@ -7,6 +7,12 @@ const AccountNavbar = () => {
     // Global
 
     const { languages, activeLanguage, setActiveLanguage } = useGlobalContext();
+    const [allOrders, setAllOrders] = useState([]);
+
+    useEffect(() => {
+        const orders = JSON.parse(localStorage.getItem('orderData')) || [];
+        setAllOrders(orders);
+    }, [])
 
     // Main 
 
@@ -47,7 +53,7 @@ const AccountNavbar = () => {
                 </div>
 
                 <div className='catalogue-two'>
-                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>25</span> Orders</p>
+                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>{allOrders.length}</span> Orders</p>
                 </div>
 
             </div>

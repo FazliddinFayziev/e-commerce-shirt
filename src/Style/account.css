@@ -122,6 +122,23 @@
     cursor: pointer;
 }
 
+.no__product__account {
+    display: flex;
+    justify-content: center;
+    align-items: centerx;
+}
+
+.no__product__account__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+}
+
+.order__time {
+    font-size: 12px;
+}
+
 @media screen and (max-width: 550px) {
 
     .order-products {

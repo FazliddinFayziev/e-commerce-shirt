@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../Style/ship.css';
 import { useGlobalContext } from '../Context/context';
 import { useNavigate } from 'react-router-dom';
@@ -6,12 +6,13 @@ import { AiFillBackward } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAllFromCart } from '../Container/cartSlice';
 import axios from '../api/axios';
+import { formatPrice } from '../Functions/functions';
 
 
 const ShippingInfo = () => {
 
     // redux related
-    const { cartItems, totalPrice } = useSelector((state) => state.cartItems);
+    const { cartItems, totalPrice, totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     // Global
     const { setCartMessage, setShow } = useGlobalContext();
@@ -47,21 +48,54 @@ const ShippingInfo = () => {
         setLoading(true);
         try {
             if (cartItems.length > 0 && name && number && district && address) {
+
+                // POSTING DATA TO BACKEND SERVER
+
                 const data = await axios.post('/postcard', cartData);
                 setCartMessage({ type: 'success', msg: 'Your Order successfully sent' });
                 setShow(true);
 
-                const orderData = {
+                // SENDING DATA TO LOCALSTORAGE
+
+                const existingOrderData = JSON.parse(localStorage.getItem('orderData')) || [];
+                existingOrderData.push({
                     cartItems: cartData.cardItems,
                     totalPrice: cartData.totalPrice,
+                    orderTime: new Date().toLocaleString(),
                     userInfo: {
                         userName: name,
                         phoneNumber: number,
                         avenue: district,
                         address: address,
                     },
-                };
-                localStorage.setItem('orderData', JSON.stringify(orderData));
+                });
+                localStorage.setItem('orderData', JSON.stringify(existingOrderData));
+
+                // SENDING DATA TELEGRAM BOT
+
+                const message = `
+                    New Order:
+                    🌱Product Info:
+                    Total Items: ${totalNumberOfItems},
+                    Total Price: ${formatPrice(totalPrice)},
+                    Order Time: ${new Date().toLocaleString()}
+
+                    🌱 User Info:
+                    Name: ${name},
+                    Phone Number: ${number},
+                    Address: ${district}, ${address},
+                `;
+
+                const botToken = '6251084597:AAG1zPjb46USa7cnT36K8vilom39iKHQ5yc';
+                const chatId = '-1001962382834';
+
+
+                await axios.get(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    params: {
+                        chat_id: chatId,
+                        text: message,
+                    },
+                });
 
                 dispatch(removeAllFromCart());
                 setName('');

@@ -1,6 +1,10 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+
+// redux related
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBanner } from '../Container/bannerSlice';
 
 // Components
 
@@ -29,27 +33,21 @@ import "../Style/LogoTitle.css";
 
 const Home = () => {
 
+    // redux related
+    const { loading, banner } = useSelector((state) => state.banner);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchBanner())
+    }, [])
+
     // Global
 
     useEffect(() => {
         AOS.init();
     }, [])
 
-    // Local
-
-    const [isLoading, setIsLoading] = useState(true);
-
-    // setTimeOut
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2500);
-    }, [])
-
-    // Loading before start
-
-    if (isLoading) {
+    if (loading) {
         return <Loading />
     }
 
@@ -61,7 +59,7 @@ const Home = () => {
             <div className='main-subject'>
                 <Navbar />
                 <LogoTitle />
-                <HerroBanner />
+                <HerroBanner banner={banner} />
                 <div id='popular' className='products'>
                     <MostPoppular />
                 </div>
