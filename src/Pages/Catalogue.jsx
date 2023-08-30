@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { AiFillFilter, AiOutlineShopping, AiOutlineSearch } from 'react-icons/ai';
 import { fetchProducts } from '../Container/productSlice';
 import { AllClothes, Filter, SmallFooter } from '../Components';
-import { filterOptions, filterCategory, filterActiveProduct, filterAvailableOptions } from '../Functions/functions';
+import { filterOptions, filterCategory, filterActiveProduct, filterAvailableOptions, filterColors } from '../Functions/functions';
 
 import '../Style/catalogue.css';
 import '../Style/footer.css';
@@ -19,6 +19,8 @@ const Catalogue = () => {
     const [sidebar, setSidebar] = useState(false);
     const [activeCategory, setActiveCategory] = useState('All');
     const [activeOptions, setActiveOptions] = useState('All');
+    const [activeColor, setActiveColor] = useState('All');
+    const [color, setColor] = useState('All');
     const [option, setOption] = useState([]);
     const [category, setCategory] = useState([]);
     const [currentProducts, setCurrentProducts] = useState([]);
@@ -39,6 +41,7 @@ const Catalogue = () => {
     useEffect(() => {
         setOption(filterOptions(availableOptions));
         setCategory(filterCategory(products));
+        setColor(filterColors(availableOptions))
     }, [products, currentProducts]);
 
     useEffect(() => {
@@ -59,12 +62,15 @@ const Catalogue = () => {
 
             <div className='both-catalogue'>
                 <Filter
+                    color={color}
                     options={option}
                     sidebar={sidebar}
                     categories={category}
                     setSidebar={setSidebar}
+                    activeColor={activeColor}
                     activeOptions={activeOptions}
                     activeCategory={activeCategory}
+                    setActiveColor={setActiveColor}
                     setActiveOptions={setActiveOptions}
                     setActiveCategory={setActiveCategory}
                 />

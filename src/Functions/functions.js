@@ -63,4 +63,11 @@ export const filterCategory = (objectOfProducts) => {
     return Array.from(new Set(['All', ...arrayOfCategories]));
 };
 
+// New Set for Filtering all products based on their Colors
+export const filterColors = (objectOfProducts) => {
+    const arrayOfColors = objectOfProducts.map((obj) => obj.colors[0]);
+    return Array.from(new Set(['All', ...arrayOfColors]));
+};
+
+
 

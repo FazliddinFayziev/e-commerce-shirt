@@ -4,6 +4,8 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const Filter = (
     {
+        color,
+        activeColor, setActiveColor,
         options,
         sidebar,
         categories,
@@ -13,6 +15,8 @@ const Filter = (
         setActiveOptions,
         setActiveCategory,
     }) => {
+
+    const colors = ['All', '#000', "#fff"]
 
     return (
         <>
@@ -60,10 +64,25 @@ const Filter = (
                             <h2>Color</h2>
                             <div className='line-blue'></div>
                             <div className='color-categories'>
-                                <div className='p'>All</div>
+                                <div
+                                    className={`${activeColor === "All" ? "filter-active-shop" : "p"}`}
+                                    onClick={() => setActiveColor("All")}
+                                >
+                                    All
+                                </div>
                                 <div className='color-categories-main'>
-                                    <div style={{ backgroundColor: "#000" }} className='single-color-active'></div>
-                                    <div style={{ backgroundColor: "#fff" }} className='single-color'></div>
+                                    {
+                                        colors.map((item, index) => {
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    style={{ backgroundColor: `${item}` }}
+                                                    className={`${activeColor === item ? "single-color-active" : "single-color"}`}
+                                                    onClick={() => setActiveColor(item)}
+                                                ></div>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
                         </div>
