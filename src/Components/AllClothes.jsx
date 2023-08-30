@@ -1,27 +1,12 @@
-import React, { useEffect } from 'react';
-import { popular } from '../Data/data';
+import React from 'react';
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from 'react-router-dom';
-
-// redux related
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../Container/productSlice';
-import SmallLoading from './SmallLoading';
 import { formatPrice } from '../Functions/functions';
 
-const AllClothes = () => {
+// redux related
+import SmallLoading from './SmallLoading';
 
-    // redux related
-    const { loading, products, error } = useSelector((state) => state.products);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchProducts())
-    }, [])
-
-    useEffect(() => {
-        console.log(products)
-    }, [products])
+const AllClothes = ({ loading, products, error }) => {
 
 
     // Main

@@ -1,75 +1,67 @@
-import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
+// Catalogue.jsx
+
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useGlobalContext } from '../Context/context';
-import { AiFillFilter, AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
-
-
-
-// Styles
-
-import "../Style/catalogue.css";
-import "../Style/footer.css";
-
-// Components
-
+import { Link } from 'react-router-dom';
+import { AiFillFilter, AiOutlineShopping, AiOutlineSearch } from 'react-icons/ai';
+import { fetchProducts } from '../Container/productSlice';
 import { AllClothes, Filter, SmallFooter } from '../Components';
-import { useSelector } from 'react-redux';
+import { filterOptions, filterCategory, filterActiveProduct, filterAvailableOptions } from '../Functions/functions';
 
+import '../Style/catalogue.css';
+import '../Style/footer.css';
 
 const Catalogue = () => {
-
-    // Global
-
     const { activeLanguage, setActiveLanguage, languages } = useGlobalContext();
+    const { totalNumberOfItems } = useSelector((state) => state.cartItems);
 
-    // Top
+    const [sidebar, setSidebar] = useState(false);
+    const [activeCategory, setActiveCategory] = useState('All');
+    const [activeOptions, setActiveOptions] = useState('All');
+    const [option, setOption] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [currentProducts, setCurrentProducts] = useState([]);
+    const [availableOptions, setAvailableOptions] = useState([]);
+
+    const dispatch = useDispatch();
+    const { loading, products, error } = useSelector((state) => state.products);
+
+    useEffect(() => {
+        dispatch(fetchProducts());
+    }, []);
+
+    useEffect(() => {
+        setCurrentProducts(filterActiveProduct(activeCategory, activeOptions, products));
+        setAvailableOptions(filterAvailableOptions(activeCategory, products))
+    }, [activeCategory, activeOptions, products]);
+
+    useEffect(() => {
+        setOption(filterOptions(availableOptions));
+        setCategory(filterCategory(products));
+    }, [products, currentProducts]);
+
+    useEffect(() => {
+        if (sidebar) {
+            document.body.classList.add('disable-scroll');
+        } else {
+            document.body.classList.remove('disable-scroll');
+        }
+    }, [sidebar]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    // Local
-
-    const categories = ["All", "Simple", "Humble", "Elegant"]
-    const options = ["All", "Python", "Java", "React", "C#"]
-
-    const [sidebar, setSidebar] = useState(false);
-    const [activeCategory, setActiveCategory] = useState("All");
-    const [activeOptions, setActiveOptions] = useState("All");
-    const { totalNumberOfItems } = useSelector((state) => state.cartItems);
-
-    useEffect(() => {
-
-        // Diable scroll 
-        if (sidebar) {
-            document.body.classList.add('disable-scroll');
-        }
-
-        // Enable scroll
-        if (!sidebar) {
-            document.body.classList.remove('disable-scroll');
-        }
-
-    }, [sidebar])
-
-
-    // Main
-
     return (
         <>
-            {sidebar && (
-                <div className='catalogue-cover'></div>
-            )}
+            {sidebar && <div className='catalogue-cover'></div>}
 
             <div className='both-catalogue'>
-
-                {/* Filter */}
-
                 <Filter
-                    options={options}
+                    options={option}
                     sidebar={sidebar}
-                    categories={categories}
+                    categories={category}
                     setSidebar={setSidebar}
                     activeOptions={activeOptions}
                     activeCategory={activeCategory}
@@ -78,15 +70,8 @@ const Catalogue = () => {
                 />
 
                 <div className='catalogue'>
-
                     <div className='above-nav-container'>
-
-                        {/* FIRST CATALOGUE */}
-
                         <nav className='above-nav'>
-
-                            {/* MENU  */}
-
                             <div onClick={() => setSidebar(true)} className='nav-filter'>
                                 <AiFillFilter fontSize={20} />
                             </div>
@@ -106,10 +91,7 @@ const Catalogue = () => {
                             </ul>
                         </nav>
 
-                        {/* SECOND CATALOGUE */}
-
                         <div className='home-catalogue-nav'>
-
                             <div className='catalogue-one'>
                                 <Link style={{ textDecoration: 'none' }} to={'/'}>
                                     <p className='no-active'>Home</p>
@@ -129,25 +111,15 @@ const Catalogue = () => {
                                 </Link>
                                 <div className='catalogue-box-count-product'><p>{totalNumberOfItems}</p></div>
                             </div>
-
                         </div>
 
-                        {/* ALL CLOTHES */}
-
-                        <AllClothes />
-
+                        <AllClothes loading={loading} products={currentProducts} error={error} />
                     </div>
-
                 </div>
-
             </div>
 
-            {/* Footer */}
-
             <SmallFooter />
-
         </>
-
     );
 };
 
