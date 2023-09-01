@@ -38,10 +38,6 @@ const CartItems = () => {
 
     }, [cart])
 
-    useEffect(() => {
-        cartItems && console.log(cartItems)
-    }, [cartItems])
-
     // Go Back
     const handleBack = () => {
         navigate(-1);

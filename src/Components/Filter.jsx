@@ -4,19 +4,20 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const Filter = (
     {
-        color,
-        activeColor, setActiveColor,
+        colors,
         options,
         sidebar,
-        categories,
         setSidebar,
+        categories,
+        activeColor,
         activeOptions,
+        setActiveColor,
         activeCategory,
         setActiveOptions,
         setActiveCategory,
     }) => {
 
-    const colors = ['All', '#000', "#fff"]
+    const colorFilter = colors.filter((color) => color !== 'All');
 
     return (
         <>
@@ -72,7 +73,7 @@ const Filter = (
                                 </div>
                                 <div className='color-categories-main'>
                                     {
-                                        colors.map((item, index) => {
+                                        colorFilter.map((item, index) => {
                                             return (
                                                 <div
                                                     key={index}

@@ -6,7 +6,7 @@ import { formatPrice } from '../Functions/functions';
 // redux related
 import SmallLoading from './SmallLoading';
 
-const AllClothes = ({ loading, products, error }) => {
+const AllClothes = ({ loading, products }) => {
 
 
     // Main
@@ -17,12 +17,12 @@ const AllClothes = ({ loading, products, error }) => {
 
     return (
         <>
-            {!loading && error ? (<div>Error: {error}</div>) : null}
             {!loading && products.length ? (
                 <div className='all-clothes'>
                     {products.map((product, index) => {
                         return (
-                            <div key={index}>
+                            <div data-aos="fade-up" data-aos-easing="linear"
+                                data-aos-duration="1000" key={index}>
 
                                 <Link to={`/catalogue/${product.id}`}>
                                     <div className='single-cloth'>
@@ -47,7 +47,7 @@ const AllClothes = ({ loading, products, error }) => {
                         <div className='no__products__yet__icon'>
                             <MdProductionQuantityLimits fontSize={50} />
                         </div>
-                        <h3>No Products Yet</h3>
+                        <h3>No Such Product</h3>
                     </div>
                 </div>
             )}

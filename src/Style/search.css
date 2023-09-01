@@ -1,0 +1,24 @@
+.search__page__input__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search__page__input {
+    margin: 50px auto;
+    width: 70%;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    border-color: #007bff;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.search__page__input input {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: none;
+    padding-left: 20px;
+}

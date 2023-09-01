@@ -67,6 +67,24 @@
     color: #fff;
 }
 
+.no__other {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.no__other p {
+    font-weight: 700;
+}
+
+.no__other__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+}
+
 
 @media screen and (max-width: 950px) {
     .popular-cards {

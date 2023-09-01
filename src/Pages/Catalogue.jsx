@@ -1,5 +1,6 @@
 // Catalogue.jsx
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGlobalContext } from '../Context/context';
@@ -20,7 +21,7 @@ const Catalogue = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [activeOptions, setActiveOptions] = useState('All');
     const [activeColor, setActiveColor] = useState('All');
-    const [color, setColor] = useState('All');
+    const [colors, setColors] = useState([]);
     const [option, setOption] = useState([]);
     const [category, setCategory] = useState([]);
     const [currentProducts, setCurrentProducts] = useState([]);
@@ -34,14 +35,14 @@ const Catalogue = () => {
     }, []);
 
     useEffect(() => {
-        setCurrentProducts(filterActiveProduct(activeCategory, activeOptions, products));
+        setCurrentProducts(filterActiveProduct(activeCategory, activeOptions, activeColor, products));
         setAvailableOptions(filterAvailableOptions(activeCategory, products))
-    }, [activeCategory, activeOptions, products]);
+    }, [activeCategory, activeOptions, activeColor, products]);
 
     useEffect(() => {
         setOption(filterOptions(availableOptions));
         setCategory(filterCategory(products));
-        setColor(filterColors(availableOptions))
+        setColors(filterColors(availableOptions));
     }, [products, currentProducts]);
 
     useEffect(() => {
@@ -56,13 +57,17 @@ const Catalogue = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
     return (
         <>
             {sidebar && <div className='catalogue-cover'></div>}
 
             <div className='both-catalogue'>
                 <Filter
-                    color={color}
+                    colors={colors}
                     options={option}
                     sidebar={sidebar}
                     categories={category}

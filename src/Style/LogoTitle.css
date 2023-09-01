@@ -1,16 +1,38 @@
-.logo-title {
+.logo-title-like {
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: var(--font-w);
 }
 
-.logo-title h2 {
+.logo-title-like h3 {
     position: relative;
     display: inline-block;
 }
 
-.logo-title h2:after {
+.logo-title-like h3:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--blue);
+}
+
+.logo-title-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--font-w);
+}
+
+.logo-title-banner h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.logo-title-banner h2:after {
     content: '';
     position: absolute;
     bottom: -5px;

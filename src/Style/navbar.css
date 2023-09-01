@@ -41,6 +41,8 @@
     cursor: pointer;
     font-size: 25px;
     transition: font-size 0.3s ease-in-out;
+    text-decoration: none;
+    color: #000;
 }
 
 .search:hover {

@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axios";
 
 const initialState = {
-    loading: false,
+    single_loading: false,
     singleProduct: [],
     error: '',
 }
@@ -18,15 +18,15 @@ const singleProductSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder.addCase(fetchSingleProduct.pending, (state) => {
-            state.loading = true
+            state.single_loading = true
         })
         builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
-            state.loading = false
+            state.single_loading = false
             state.singleProduct = action.payload
             state.error = ''
         })
         builder.addCase(fetchSingleProduct.rejected, (state, action) => {
-            state.loading = false
+            state.single_loading = false
             state.singleProduct = []
             state.error = action.error.message
         })

@@ -4,7 +4,7 @@ const LogoTitle = () => {
     return (
         <>
             <div id='home' data-aos="fade-up" data-aos-easing="linear"
-                data-aos-duration="1000" className='logo-title'>
+                data-aos-duration="1000" className='logo-title-banner'>
                 <h2>#Hello-World</h2>
             </div>
         </>

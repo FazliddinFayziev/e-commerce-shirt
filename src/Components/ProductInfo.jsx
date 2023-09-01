@@ -5,32 +5,26 @@ import SmallLoading from './SmallLoading';
 import { useGlobalContext } from '../Context/context';
 
 // redux related imports
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleProduct } from '../Container/singleProductSlice';
+import { useDispatch } from 'react-redux';
+
 
 // card Items functions
 import { addToCart } from '../Container/cartSlice';
 import { formatPrice } from '../Functions/functions';
 
-const ProductInfo = () => {
+const ProductInfo = ({ singleProduct, single_loading }) => {
 
     // Global
     const { setShow, setCartMessage } = useGlobalContext();
+    const dispatch = useDispatch();
 
     const { productId } = useParams();
     const [activeImg, setActiveImg] = useState('');
     const [count, setCount] = useState(1);
 
 
-    // redux related
-    const { loading, singleProduct, error } = useSelector((state) => state.singleProduct);
     const { category, colors, images, name, desceng, descuz, descru, price, size } = singleProduct;
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch(fetchSingleProduct(productId))
-    }, [])
 
     useEffect(() => {
         setActiveImg(images && images.length > 0 ? images[0] : '');
@@ -65,7 +59,7 @@ const ProductInfo = () => {
         }
     };
 
-    if (loading) {
+    if (single_loading) {
         return <SmallLoading />
     }
 

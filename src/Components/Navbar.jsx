@@ -15,9 +15,9 @@ const Navbar = () => {
                     <div onClick={() => setNav(true)} className='nav'>
                         <TiThMenu fontSize={20} />
                     </div>
-                    <div className='search'>
+                    <Link to={'/search'} className='search'>
                         <AiOutlineSearch />
-                    </div>
+                    </Link>
                 </div>
                 <div className='navbar-box'>
                     <Link to={'/account'} className='account'>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Home, Error, Catalogue, Product, Account } from "./Pages";
+import { Home, Error, Catalogue, Product, Account, Search } from "./Pages";
 import { Routes, Route, useLocation, Link } from "react-router-dom";
 import { AlertCart, CartItems, ShippingInfo, Success } from "./Components";
 import { useGlobalContext } from "./Context/context";
@@ -52,6 +52,7 @@ function App() {
         <Route path="/catalogue/:productId" element={<Product />} />
         <Route path="/account" element={<Account />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/search" element={<Search />} />
         <Route path="*" element={<Error />} />
 
       </Routes>

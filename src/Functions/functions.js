@@ -26,21 +26,15 @@ export const formatPrice = (price) => {
 // Functions/functions.js
 
 // Filter Category and Options
-export const filterActiveProduct = (activeCategory, activeOptions, products) => {
-    if (activeCategory === 'All') {
-        if (activeOptions === 'All') {
-            return products;
-        } else {
-            return products.filter((product) => product.option === activeOptions);
-        }
-    } else {
-        if (activeOptions === 'All') {
-            return products.filter((product) => product.category === activeCategory);
-        } else {
-            return products.filter((product) => product.category === activeCategory && product.option === activeOptions);
-        }
-    }
+export const filterActiveProduct = (activeCategory, activeOptions, activeColor, products) => {
+    return products.filter((product) => {
+        const categoryMatch = activeCategory === 'All' || product.category === activeCategory;
+        const optionsMatch = activeOptions === 'All' || product.option === activeOptions;
+        const colorMatch = activeColor === 'All' || product.colors.includes(activeColor);
+        return categoryMatch && optionsMatch && colorMatch;
+    });
 };
+
 
 // Filter Category and Options
 export const filterAvailableOptions = (activeCategory, products) => {
@@ -67,6 +61,14 @@ export const filterCategory = (objectOfProducts) => {
 export const filterColors = (objectOfProducts) => {
     const arrayOfColors = objectOfProducts.map((obj) => obj.colors[0]);
     return Array.from(new Set(['All', ...arrayOfColors]));
+};
+
+// Filter products based on user liked products
+export const filterLikedProducts = (arrayOfProducts, currentCategory, id) => {
+    const arrayOfLikedProducts = arrayOfProducts.filter(
+        (obj) => obj.id !== id && obj.category === currentCategory
+    );
+    return arrayOfLikedProducts;
 };
 
 

@@ -104,7 +104,6 @@ const ShippingInfo = () => {
                 setAddress('');
                 setLoading(false);
                 navigate('/success')
-                console.log(data);
             } else {
                 setLoading(false);
                 setCartMessage({ type: 'error', msg: 'Fill all Inputs' });

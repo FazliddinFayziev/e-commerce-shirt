@@ -1,41 +1,56 @@
 import React from 'react';
-import { popular } from '../Data/data';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../Functions/functions';
+import { MdProductionQuantityLimits } from "react-icons/md";
 
-const LikeProducts = () => {
+const LikeProducts = ({ likeProduct }) => {
     return (
         <>
 
             {/* TITLE */}
 
-            <div className='logo-title'>
+            <div className='logo-title-like'>
                 <h3>You may like</h3>
             </div>
 
             {/* CONTAINER OF CLOTHES */}
 
-            <div className='all-clothes'>
-                {popular.map((product, index) => {
-                    return (
-                        <div key={index}>
+            {likeProduct.length > 0 ? (
+                <div className='all-clothes'>
+                    {likeProduct.map((product, index) => {
+                        return (
+                            <div data-aos="fade-up" data-aos-easing="linear"
+                                data-aos-duration="1000" key={index}>
 
-                            <Link to={`/catalogue/${product.id}`}>
-                                <div className='single-cloth'>
-                                    <img src={product.img} alt="single-cloth" />
-                                </div>
-                            </Link>
+                                <Link to={`/catalogue/${product.id}`}>
+                                    <div className='single-cloth'>
+                                        <img src={product.images} alt="single-cloth" />
+                                    </div>
+                                </Link>
 
-                            <div className='shirt-container'>
-                                <div className='shirt-info'>
-                                    <p className='category'>category</p>
-                                    <p className='title'>our title</p>
-                                    <p className='price'>20 $</p>
+                                <div className='shirt-container'>
+                                    <div className='shirt-info'>
+                                        <p className='category'>{product.category}</p>
+                                        <p className='title'>{product.name}</p>
+                                        <p className='price'>{formatPrice(product.price)} UZS</p>
+                                    </div>
                                 </div>
                             </div>
+                        )
+                    })}
+
+                </div>
+            ) : (
+                <div className='no__other'>
+                    <div>
+                        <div className='no__other__icons'>
+                            <MdProductionQuantityLimits fontSize={30} />
                         </div>
-                    )
-                })}
-            </div>
+                        <p>No other Product in this Category</p>
+                    </div>
+                </div>
+            )}
+
 
         </>
     )
