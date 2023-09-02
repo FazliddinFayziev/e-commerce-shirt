@@ -2,15 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../Functions/functions';
 import { MdProductionQuantityLimits } from "react-icons/md";
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 const LikeProducts = ({ likeProduct }) => {
+    const { activeLanguage } = useGlobalContext();
     return (
         <>
 
             {/* TITLE */}
 
             <div className='logo-title-like'>
-                <h3>You may like</h3>
+                <h3>{language(activeLanguage).maylike}</h3>
             </div>
 
             {/* CONTAINER OF CLOTHES */}
@@ -46,7 +49,7 @@ const LikeProducts = ({ likeProduct }) => {
                         <div className='no__other__icons'>
                             <MdProductionQuantityLimits fontSize={30} />
                         </div>
-                        <p>No other Product in this Category</p>
+                        <p>{language(activeLanguage).no_product}</p>
                     </div>
                 </div>
             )}

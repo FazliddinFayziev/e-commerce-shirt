@@ -12,6 +12,7 @@ import { filterOptions, filterCategory, filterActiveProduct, filterAvailableOpti
 
 import '../Style/catalogue.css';
 import '../Style/footer.css';
+import { language } from '../Functions/language';
 
 const Catalogue = () => {
     const { activeLanguage, changeLanguage, languages } = useGlobalContext();
@@ -108,7 +109,7 @@ const Catalogue = () => {
                                     <p className='no-active'>Home</p>
                                 </Link>
                                 <div className='catalogue-dot'>
-                                    <p className='active'>Catalogue</p>
+                                    <p className='active'>{language(activeLanguage).catalogue}</p>
                                     <div className='dot'></div>
                                 </div>
                             </div>

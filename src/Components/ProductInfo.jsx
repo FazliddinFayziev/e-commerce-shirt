@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SmallLoading from './SmallLoading';
 import { useGlobalContext } from '../Context/context';
 
+
 // redux related imports
 import { useDispatch } from 'react-redux';
 
@@ -11,11 +12,12 @@ import { useDispatch } from 'react-redux';
 // card Items functions
 import { addToCart } from '../Container/cartSlice';
 import { formatPrice } from '../Functions/functions';
+import { language } from '../Functions/language';
 
 const ProductInfo = ({ singleProduct, single_loading }) => {
 
     // Global
-    const { setShow, setCartMessage } = useGlobalContext();
+    const { setShow, setCartMessage, activeLanguage } = useGlobalContext();
     const dispatch = useDispatch();
 
     const { productId } = useParams();
@@ -23,7 +25,16 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
     const [count, setCount] = useState(1);
 
 
-    const { category, colors, images, name, desceng, descuz, descru, price, size } = singleProduct;
+    const { category, images, name, desceng, descuz, descru, price, size } = singleProduct;
+    const descLanguage = () => {
+        if (activeLanguage === "Eng") {
+            return desceng
+        } else if (activeLanguage === "Ru") {
+            return descru
+        } else {
+            return descuz
+        }
+    }
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,7 +43,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
 
     // Buy Now Product
     const buyNowProduct = () => {
-        const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
+        const newItem = { id: productId, image: images[0], name, category, description: descLanguage(), quantity: count, size, price };
         dispatch(addToCart(newItem));
         setCartMessage({ type: 'success', msg: 'Product is added successfully' })
         setShow(true)
@@ -81,7 +92,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                         <div className='long-line'></div>
                     </div>
                     <div className='dot-container'>
-                        <p>O5</p>
+                        <p>product</p>
                     </div>
                 </div>
             </div>
@@ -128,7 +139,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
 
                         <div className='part-two-container'>
                             <p className='part-two-description'>Description:</p>
-                            <p className='part-two-text'>{descuz}</p>
+                            <p className='part-two-text'>{descLanguage()}</p>
                         </div>
 
                         {/* BUTTONS */}
@@ -160,10 +171,10 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
 
                         <div className='add__to__card__container'>
                             <div onClick={addItemToCart} className='add__to__card'>
-                                <button>Add to Card</button>
+                                <button>{language(activeLanguage).add}</button>
                             </div>
                             <div onClick={buyNowProduct} className='add__to__card'>
-                                <button>Buy Now</button>
+                                <button>{language(activeLanguage).buy}</button>
                             </div>
                         </div>
 
@@ -183,7 +194,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                                 <div className='gray-line-of-product'></div>
                             </div>
                             <div className='dot-main-container'>
-                                <p>05</p>
+                                <p>product</p>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 const Footer = () => {
+
+    const { activeLanguage } = useGlobalContext();
 
     // MAIN FUNCTION OF FOOTER
 
@@ -31,7 +35,12 @@ const Footer = () => {
 
                 <div data-aos="fade-up-right" data-aos-easing="linear"
                     data-aos-duration="1000" className='subscribe'>
-                    <h3>SUBSCRIBE TO OUR NEWLETTER</h3>
+                    <h3>{language(activeLanguage).ask}</h3>
+                </div>
+
+                <div data-aos="fade-up-right" data-aos-easing="linear"
+                    data-aos-duration="1000" className='contact__details__container'>
+                    <p>{language(activeLanguage).question}</p>
                 </div>
 
                 {/* subscribe input */}
@@ -39,8 +48,8 @@ const Footer = () => {
                 <div data-aos="fade-right" data-aos-easing="linear"
                     data-aos-duration="1000" className='subscribe-container'>
                     <div className='subscribe-input'>
-                        <input type="text" placeholder='Your E-mail' />
-                        <button>Subscribe</button>
+                        <input type="text" placeholder={language(activeLanguage).askPlaceholder} />
+                        <button>{language(activeLanguage).send}</button>
                     </div>
                 </div>
 
@@ -52,7 +61,7 @@ const Footer = () => {
 
                     <div data-aos="fade-right" data-aos-easing="linear"
                         data-aos-duration="1000" className='footer-box'>
-                        <p className='main-text'>Categories</p>
+                        <p className='main-text'>{language(activeLanguage).categories}</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
@@ -67,7 +76,7 @@ const Footer = () => {
 
                     <div data-aos="fade-right" data-aos-easing="linear"
                         data-aos-duration="1000" className='footer-box'>
-                        <p className='main-text'>Content</p>
+                        <p className='main-text'>{language(activeLanguage).content}</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
@@ -75,10 +84,10 @@ const Footer = () => {
                                     <p>Home</p>
                                 </a>
                                 <a href="#popular">
-                                    <p>Popular</p>
+                                    <p>{language(activeLanguage).simple_popular}</p>
                                 </a>
                                 <a href='#blog'>
-                                    <p>Blog</p>
+                                    <p>{language(activeLanguage).simple_blog}</p>
                                 </a>
 
                             </div>
@@ -89,7 +98,7 @@ const Footer = () => {
 
                     <div data-aos="fade-right" data-aos-easing="linear"
                         data-aos-duration="1000" className='footer-box'>
-                        <p className='main-text'>Social</p>
+                        <p className='main-text'>{language(activeLanguage).social}</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
@@ -105,7 +114,7 @@ const Footer = () => {
                 {/* © CopyRight */}
 
                 <div className='copy-right'>
-                    <p>copyright © #Hello World 2023 .all rights reserved</p>
+                    <p>{language(activeLanguage).copyright}</p>
                 </div>
 
             </footer>

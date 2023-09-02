@@ -1,6 +1,9 @@
 import React from 'react'
+import { language } from '../Functions/language'
+import { useGlobalContext } from '../Context/context'
 
 const SmallFooter = () => {
+    const { activeLanguage } = useGlobalContext();
     return (
         <>
             <footer>
@@ -13,16 +16,23 @@ const SmallFooter = () => {
 
                 {/* subscribe text */}
 
-                <div className='subscribe'>
-                    <h3>SUBSCRIBE TO OUR NEWLETTER</h3>
+                <div data-aos="fade-up-right" data-aos-easing="linear"
+                    data-aos-duration="1000" className='subscribe'>
+                    <h3>{language(activeLanguage).ask}</h3>
+                </div>
+
+                <div data-aos="fade-up-right" data-aos-easing="linear"
+                    data-aos-duration="1000" className='contact__details__container'>
+                    <p>{language(activeLanguage).question}</p>
                 </div>
 
                 {/* subscribe input */}
 
-                <div className='subscribe-container'>
+                <div data-aos="fade-right" data-aos-easing="linear"
+                    data-aos-duration="1000" className='subscribe-container'>
                     <div className='subscribe-input'>
-                        <input type="text" placeholder='Your E-mail' />
-                        <button>Subscribe</button>
+                        <input type="text" placeholder={language(activeLanguage).askPlaceholder} />
+                        <button>{language(activeLanguage).send}</button>
                     </div>
                 </div>
 
@@ -33,7 +43,7 @@ const SmallFooter = () => {
                     {/* Box 1 */}
 
                     <div className='footer-box'>
-                        <p className='main-text'>Categories</p>
+                        <p className='main-text'>{language(activeLanguage).categories}</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
@@ -47,7 +57,7 @@ const SmallFooter = () => {
                     {/* Box 3 */}
 
                     <div className='footer-box'>
-                        <p className='main-text'>Social</p>
+                        <p className='main-text'>{language(activeLanguage).social}</p>
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
@@ -63,7 +73,7 @@ const SmallFooter = () => {
                 {/* © CopyRight */}
 
                 <div className='copy-right'>
-                    <p>copyright © #Hello World 2023 .all rights reserved</p>
+                    <p>{language(activeLanguage).copyright}</p>
                 </div>
 
             </footer>

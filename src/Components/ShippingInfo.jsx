@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeAllFromCart } from '../Container/cartSlice';
 import axios from '../api/axios';
 import { formatPrice } from '../Functions/functions';
+import { language } from '../Functions/language';
 
 
 const ShippingInfo = () => {
@@ -131,7 +132,7 @@ const ShippingInfo = () => {
 
             <nav className='single-product-nav-one'>
                 <div className='logo-title'>
-                    <h3>Shipping Info</h3>
+                    <h3 style={{ textAlign: "center" }}>{language(activeLanguage).shipping}</h3>
                 </div>
                 <ul className='language'>
                     {languages.map((language, index) => (
@@ -159,15 +160,15 @@ const ShippingInfo = () => {
                 ) : (
                     <div className='shipping__box'>
                         <div className='shipping__input'>
-                            <label htmlFor="">First Name</label>
+                            <label htmlFor="">{language(activeLanguage).name}</label>
                             <input onChange={(e) => setName(e.target.value)} type="text" />
                         </div>
                         <div className='shipping__input'>
-                            <label htmlFor="">Phone Number</label>
+                            <label htmlFor="">{language(activeLanguage).number}</label>
                             <input onChange={(e) => setNumber(e.target.value)} type="number" />
                         </div>
                         <div className='shipping__input'>
-                            <label htmlFor="">District</label>
+                            <label htmlFor="">{language(activeLanguage).district}</label>
                             <select onChange={(e) => setDistrict(e.target.value)} name="" id="">
                                 <option value="">Choose</option>
                                 <option value="Uchtepa">Uchtepa</option>
@@ -185,7 +186,7 @@ const ShippingInfo = () => {
                             </select>
                         </div>
                         <div className='shipping__input'>
-                            <label htmlFor="">Address</label>
+                            <label htmlFor="">{language(activeLanguage).address}</label>
                             <input onChange={(e) => setAddress(e.target.value)} type="text" />
                         </div>
                     </div>
@@ -195,8 +196,8 @@ const ShippingInfo = () => {
 
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
-                    <button onClick={handleBack}><AiFillBackward className='back-icon-small' /> Back</button>
-                    <button onClick={(event) => postCart(cartData, event)}>Order</button>
+                    <button onClick={handleBack}><AiFillBackward className='back-icon-small' />{language(activeLanguage).back}</button>
+                    <button onClick={(event) => postCart(cartData, event)}>{language(activeLanguage).order}</button>
                 </div>
             </div>
 

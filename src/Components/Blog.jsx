@@ -1,13 +1,16 @@
 import React from 'react';
 import { BsInstagram } from "react-icons/bs";
 import { data } from "../Data/data";
+import { useGlobalContext } from '../Context/context';
+import { language } from '../Functions/language';
 
 const Blog = () => {
+    const { activeLanguage } = useGlobalContext();
     return (
         <>
             <div id='blog' data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="1000" className='blog'>
-                <h2>Our Blog</h2>
+                <h2>{language(activeLanguage).blog}</h2>
             </div>
             <div className='instagram'>
                 <div id='blog' data-aos="fade-right" data-aos-easing="linear"

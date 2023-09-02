@@ -13,6 +13,7 @@ import SingleItem from './SingleItem';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { formatPrice } from '../Functions/functions';
+import { language } from '../Functions/language';
 
 const CartItems = () => {
 
@@ -70,13 +71,13 @@ const CartItems = () => {
 
             <div className='total-card-navbar'>
                 <div className='total-card-navbar-tems'>
-                    <h3>Your Cart</h3>
+                    <h3>{language(activeLanguage).cart}</h3>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <p className='cart-items-number'>{totalNumberOfItems} items</p>
+                    <p className='cart-items-number'>{totalNumberOfItems} {language(activeLanguage).items}</p>
                 </div>
                 <div className='total-card-navbar-tems'>
-                    <h3><span className='total-items-number'>Total: </span> {formatPrice(totalPrice)} UZS</h3>
+                    <h3><span className='total-items-number'>{language(activeLanguage).total}: </span> {formatPrice(totalPrice)} UZS</h3>
                 </div>
             </div>
 
@@ -100,7 +101,7 @@ const CartItems = () => {
                                 <BsFillBasket3Fill fontSize={40} />
                             </div>
                             <p>
-                                There is no Product yet
+                                {language(activeLanguage).no_yet}
                             </p>
                         </div>
                     </div>
@@ -110,11 +111,11 @@ const CartItems = () => {
 
             <div className='center-next-cart-buttons'>
                 <div className='next-cart-buttons'>
-                    <button onClick={handleBack}> <AiFillBackward className='back-icon-small' /> Back</button>
+                    <button onClick={handleBack}> <AiFillBackward className='back-icon-small' /> {language(activeLanguage).back}</button>
                     {
                         cartItems.length > 0 && (
                             <Link to={'/shipping'} style={{ textDecoration: 'none' }}>
-                                <button>Continue</button>
+                                <button>{language(activeLanguage).continuing}</button>
                             </Link>
                         )
                     }

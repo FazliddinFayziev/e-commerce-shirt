@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
 import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from 'react-redux';
+import { language } from '../Functions/language';
 
 const SmallNavbar = () => {
 
@@ -44,10 +45,10 @@ const SmallNavbar = () => {
                         <p className='no-active'>Home</p>
                     </Link>
                     <Link style={{ textDecoration: 'none' }} to={'/catalogue'}>
-                        <p className='no-active'>Catalogue</p>
+                        <p className='no-active'>{language(activeLanguage).catalogue}</p>
                     </Link>
                     <div className='catalogue-dot'>
-                        <p className='active'>Product</p>
+                        <p className='active'>{language(activeLanguage).product}</p>
                         <div className='dot'></div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { AiOutlineClose } from "react-icons/ai";
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 
 const Filter = (
@@ -18,6 +20,7 @@ const Filter = (
     }) => {
 
     const colorFilter = colors.filter((color) => color !== 'All');
+    const { activeLanguage } = useGlobalContext();
 
     return (
         <>
@@ -42,7 +45,7 @@ const Filter = (
 
                     <div className='shop-filter'>
                         <div className='shop-filter-title'>
-                            <h2>Shop</h2>
+                            <h2>{language(activeLanguage).categories}</h2>
                             <div className='line-blue'></div>
                             <div className='filter-categories'>
                                 {categories.map((category, index) => (
@@ -62,7 +65,7 @@ const Filter = (
 
                     <div className='color-filter'>
                         <div className='color-filter-title'>
-                            <h2>Color</h2>
+                            <h2>{language(activeLanguage).color}</h2>
                             <div className='line-blue'></div>
                             <div className='color-categories'>
                                 <div
@@ -93,7 +96,7 @@ const Filter = (
 
                     <div className='shop-filter'>
                         <div className='shop-filter-title'>
-                            <h2>Options</h2>
+                            <h2>{language(activeLanguage).options}</h2>
                             <div className='line-blue'></div>
                             <div className='filter-categories'>
                                 {options.map((option, index) => (

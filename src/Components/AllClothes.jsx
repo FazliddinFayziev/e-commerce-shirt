@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../Functions/functions';
+import { MdProductionQuantityLimits } from "react-icons/md";
 
 // redux related
 import SmallLoading from './SmallLoading';
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 const AllClothes = ({ loading, products }) => {
 
+    const { activeLanguage } = useGlobalContext();
 
     // Main
 
@@ -16,7 +20,7 @@ const AllClothes = ({ loading, products }) => {
 
     return (
         <>
-            {!loading && products.length > 0 &&
+            {!loading && products.length > 0 ? (
                 <div className='all-clothes'>
                     {products.map((product, index) => {
                         return (
@@ -40,6 +44,17 @@ const AllClothes = ({ loading, products }) => {
                         )
                     })}
                 </div>
+
+            ) : (
+                <div className='no__other'>
+                    <div>
+                        <div className='no__other__icons'>
+                            <MdProductionQuantityLimits fontSize={50} />
+                        </div>
+                        <p>{language(activeLanguage).suchproduct}</p>
+                    </div>
+                </div>
+            )
             }
         </>
     )
