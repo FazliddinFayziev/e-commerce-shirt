@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
+import { useSelector } from 'react-redux';
 
-const AccountNavbar = () => {
+const SmallSearchNavbar = () => {
 
     // Global
 
     const { languages, activeLanguage, changeLanguage } = useGlobalContext();
-    const [allOrders, setAllOrders] = useState([]);
-
-    useEffect(() => {
-        const orders = JSON.parse(localStorage.getItem('orderData')) || [];
-        setAllOrders(orders);
-    }, [])
 
     // Main 
 
@@ -23,7 +18,9 @@ const AccountNavbar = () => {
 
             <nav className='single-product-nav-one'>
                 <div className='logo-title'>
-                    <h3>#Hello World</h3>
+                    <Link style={{ textDecoration: 'none', color: '#000' }} to={'/'}>
+                        <h3>#Hello World</h3>
+                    </Link>
                 </div>
                 <ul className='language'>
                     {languages.map((language, index) => (
@@ -47,18 +44,16 @@ const AccountNavbar = () => {
                         <p className='no-active'>Home</p>
                     </Link>
                     <div className='catalogue-dot'>
-                        <p className='active'>Account</p>
+                        <p className='active'>Search</p>
                         <div className='dot'></div>
                     </div>
                 </div>
 
-                <div className='catalogue-two'>
-                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>{allOrders.length}</span> Orders</p>
-                </div>
+                <div className='catalogue-two'></div>
 
             </div>
         </>
     )
 }
 
-export default AccountNavbar
+export default SmallSearchNavbar

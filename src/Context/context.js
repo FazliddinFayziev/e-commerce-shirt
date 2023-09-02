@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 const AppContext = React.createContext();
 
@@ -16,7 +16,22 @@ export const AppProvider = ({ children }) => {
 
     // Languages
     const languages = ["Eng", "Ru", "Uz"];
-    const [activeLanguage, setActiveLanguage] = useState("Eng");
+    const storedLanguage = JSON.parse(localStorage.getItem('language'));
+    const [activeLanguage, setActiveLanguage] = useState(storedLanguage);
+
+    useEffect(() => {
+        if (!storedLanguage) {
+            localStorage.setItem('language', JSON.stringify('Uz'));
+        }
+        else {
+            localStorage.setItem('language', JSON.stringify(storedLanguage));
+        }
+    }, []);
+
+    const changeLanguage = (language) => {
+        setActiveLanguage(language)
+        localStorage.setItem('language', JSON.stringify(language));
+    };
 
     // cartItem Logic
     const [cart, setCart] = useState(false);
@@ -42,6 +57,7 @@ export const AppProvider = ({ children }) => {
         languages,
         activeLanguage,
         setActiveLanguage,
+        changeLanguage,
 
         // Change cart
         cart, setCart,

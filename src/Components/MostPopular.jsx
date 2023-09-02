@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MostPopular = () => {
     return (
         <>
-            <div data-aos="fade-up" data-aos-easing="linear"
+            <div id='popular' data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="1000" className='popular'>
                 <h2>Most Popular</h2>
             </div>

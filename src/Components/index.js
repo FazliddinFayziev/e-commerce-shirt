@@ -21,3 +21,4 @@ export { default as ShippingInfo } from "./ShippingInfo";
 export { default as SmallLoading } from "./SmallLoading";
 export { default as AccountNavbar } from "./AccountNavbar";
 export { default as SuccessNavbar } from "./SuccessNavbar";
+export { default as SmallSearchNavbar } from "./SmallSearchNavbar";

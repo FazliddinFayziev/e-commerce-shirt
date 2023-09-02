@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
 
 const SuccessNavbar = () => {
 
     // Global
 
-    const { languages, activeLanguage, setActiveLanguage } = useGlobalContext();
+    const { languages, activeLanguage, changeLanguage } = useGlobalContext();
 
     // Main 
 
@@ -23,7 +22,7 @@ const SuccessNavbar = () => {
                     {languages.map((language, index) => (
                         <p
                             key={index}
-                            onClick={() => setActiveLanguage(language)}
+                            onClick={() => changeLanguage(language)}
                             className={language === activeLanguage ? 'active' : 'no-active'}
                         >
                             {language}

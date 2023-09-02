@@ -17,7 +17,7 @@ import { formatPrice } from '../Functions/functions';
 const CartItems = () => {
 
     // Global
-    const { languages, cart, setActiveLanguage, activeLanguage } = useGlobalContext();
+    const { languages, cart, changeLanguage, activeLanguage } = useGlobalContext();
     const navigate = useNavigate();
 
     // redux related
@@ -57,7 +57,7 @@ const CartItems = () => {
                     {languages.map((language, index) => (
                         <p
                             key={index}
-                            onClick={() => setActiveLanguage(language)}
+                            onClick={() => changeLanguage(language)}
                             className={language === activeLanguage ? 'active' : 'no-active'}
                         >
                             {language}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../Functions/functions';
 
@@ -17,7 +16,7 @@ const AllClothes = ({ loading, products }) => {
 
     return (
         <>
-            {!loading && products.length ? (
+            {!loading && products.length > 0 &&
                 <div className='all-clothes'>
                     {products.map((product, index) => {
                         return (
@@ -41,16 +40,7 @@ const AllClothes = ({ loading, products }) => {
                         )
                     })}
                 </div>
-            ) : (
-                <div className='no__products__yet'>
-                    <div>
-                        <div className='no__products__yet__icon'>
-                            <MdProductionQuantityLimits fontSize={50} />
-                        </div>
-                        <h3>No Such Product</h3>
-                    </div>
-                </div>
-            )}
+            }
         </>
     )
 }

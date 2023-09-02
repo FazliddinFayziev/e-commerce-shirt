@@ -14,7 +14,7 @@ import '../Style/catalogue.css';
 import '../Style/footer.css';
 
 const Catalogue = () => {
-    const { activeLanguage, setActiveLanguage, languages } = useGlobalContext();
+    const { activeLanguage, changeLanguage, languages } = useGlobalContext();
     const { totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     const [sidebar, setSidebar] = useState(false);
@@ -93,7 +93,7 @@ const Catalogue = () => {
                                 {languages.map((language, index) => (
                                     <p
                                         key={index}
-                                        onClick={() => setActiveLanguage(language)}
+                                        onClick={() => changeLanguage(language)}
                                         className={language === activeLanguage ? 'active' : 'no-active'}
                                     >
                                         {language}
@@ -115,7 +115,9 @@ const Catalogue = () => {
 
                             <div className='catalogue-two'>
                                 <div className='catalogue-search'>
-                                    <AiOutlineSearch fontSize={30} />
+                                    <Link to={'/search'} className='search'>
+                                        <AiOutlineSearch fontSize={30} />
+                                    </Link>
                                 </div>
                                 <Link to={'/cartItem'} className='catalogue-box'>
                                     <AiOutlineShopping fontSize={30} />

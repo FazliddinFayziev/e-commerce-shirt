@@ -24,7 +24,7 @@ const ShippingInfo = () => {
     const [district, setDistrict] = useState('');
     const [address, setAddress] = useState('');
 
-    const { ship, languages, setActiveLanguage, activeLanguage } = useGlobalContext();
+    const { ship, languages, changeLanguage, activeLanguage } = useGlobalContext();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -137,7 +137,7 @@ const ShippingInfo = () => {
                     {languages.map((language, index) => (
                         <p
                             key={index}
-                            onClick={() => setActiveLanguage(language)}
+                            onClick={() => changeLanguage(language)}
                             className={language === activeLanguage ? 'active' : 'no-active'}
                         >
                             {language}

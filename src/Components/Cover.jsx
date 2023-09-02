@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { AiOutlineClose } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
+import { useNavigate } from 'react-router-dom';
 
 const Cover = () => {
 
     // Global
 
-    const { nav, setNav } = useGlobalContext();
+    const { nav, setNav, languages, changeLanguage } = useGlobalContext();
+    const navigate = useNavigate();
 
     // Local
     useEffect(() => {
@@ -23,6 +25,22 @@ const Cover = () => {
 
     }, [nav])
 
+    const handleCatalogue = () => {
+        navigate('/catalogue')
+        setNav(false)
+    }
+
+    useEffect(() => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    }, [])
+
     return (
         <div className={`cover-subject ${!nav ? 'close' : ''}`}>
             <AiOutlineClose onClick={() => setNav(false)} className='close-btn' fontSize={30} />
@@ -32,18 +50,24 @@ const Cover = () => {
                 <div className='nav-item'>
                     <p className='nav-text'>Categories:</p>
                     <div className='nav-small-text'>
-                        <p>Simple</p>
-                        <p>Humble</p>
-                        <p>Elegant</p>
+                        <p onClick={handleCatalogue}>Simple</p>
+                        <p onClick={handleCatalogue}>Humble</p>
+                        <p onClick={handleCatalogue}>Elegant</p>
                     </div>
                 </div>
 
                 <div className='nav-item'>
                     <p className='nav-text'>Content:</p>
                     <div className='nav-small-text'>
-                        <p>Home</p>
-                        <p>Popular</p>
-                        <p>Blog</p>
+                        <a onClick={() => setNav(false)} href="#home">
+                            <p>Home</p>
+                        </a>
+                        <a onClick={() => setNav(false)} href="#popular">
+                            <p>Popular</p>
+                        </a>
+                        <a onClick={() => setNav(false)} href="#blog">
+                            <p>Blog</p>
+                        </a>
                     </div>
                 </div>
 
@@ -59,9 +83,14 @@ const Cover = () => {
                 <div className='nav-item'>
                     <p className='nav-text'>Language:</p>
                     <div className='nav-small-text'>
-                        <p>English</p>
-                        <p>Russian</p>
-                        <p>Uzbek</p>
+                        <p onClick={() => { changeLanguage(languages[0]); setNav(false) }}>
+                            English</p>
+                        <p onClick={() => { changeLanguage(languages[1]); setNav(false) }}>
+                            Russian
+                        </p>
+                        <p onClick={() => { changeLanguage(languages[2]); setNav(false) }}>
+                            Uzbek
+                        </p>
                     </div>
                 </div>
             </div>

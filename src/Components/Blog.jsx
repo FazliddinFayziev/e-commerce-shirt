@@ -5,7 +5,7 @@ import { data } from "../Data/data";
 const Blog = () => {
     return (
         <>
-            <div data-aos="fade-up" data-aos-easing="linear"
+            <div id='blog' data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="1000" className='blog'>
                 <h2>Our Blog</h2>
             </div>

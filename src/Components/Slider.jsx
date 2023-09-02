@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 const Slider = ({ banner }) => {
+
+    const { activeLanguage } = useGlobalContext();
 
     // UseState() 
 
@@ -54,7 +58,7 @@ const Slider = ({ banner }) => {
 
                 <div data-aos="fade-up" data-aos-easing="linear"
                     data-aos-duration="1000" className='shop'>
-                    <h1>Shop</h1>
+                    <h1>{language(activeLanguage).categories}</h1>
                     <div className='line'></div>
                     <SliderCategories currentSlide={currentSlide} />
                 </div>
@@ -65,13 +69,13 @@ const Slider = ({ banner }) => {
                     data-aos-duration="1000" className='limited'>
                     <h3>{banner.length > 0 && banner[currentSlide].number}</h3>
                     <p className='edition'>#Hello-World</p>
-                    <p className='programming-shirt'>Programming T-Shirts</p>
+                    <p className='programming-shirt'>{language(activeLanguage).title}</p>
                 </div>
 
                 {/* Show Now Button */}
 
                 <Link to={banner.length > 0 && `catalogue/${banner[currentSlide].link}`} className='shop-now-button'>
-                    <button>Shop Now</button>
+                    <button>{language(activeLanguage).shop}</button>
                 </Link>
 
                 {/* Slide Logic */}

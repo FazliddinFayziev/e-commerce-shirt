@@ -8,7 +8,7 @@ const SmallNavbar = () => {
 
     // Global
 
-    const { languages, activeLanguage, setActiveLanguage } = useGlobalContext();
+    const { languages, activeLanguage, changeLanguage } = useGlobalContext();
     const { totalNumberOfItems } = useSelector((state) => state.cartItems);
 
     // Main 
@@ -26,7 +26,7 @@ const SmallNavbar = () => {
                     {languages.map((language, index) => (
                         <p
                             key={index}
-                            onClick={() => setActiveLanguage(language)}
+                            onClick={() => changeLanguage(language)}
                             className={language === activeLanguage ? 'active' : 'no-active'}
                         >
                             {language}
@@ -54,7 +54,9 @@ const SmallNavbar = () => {
 
                 <div className='catalogue-two'>
                     <div className='catalogue-search'>
-                        <AiOutlineSearch fontSize={30} />
+                        <Link to={'/search'} className='search'>
+                            <AiOutlineSearch fontSize={30} />
+                        </Link>
                     </div>
                     <Link to={'/cartItem'} className='catalogue-box'>
                         <AiOutlineShopping fontSize={30} />
