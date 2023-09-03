@@ -1,9 +1,14 @@
 import React from 'react'
 import { language } from '../Functions/language'
 import { useGlobalContext } from '../Context/context'
+import { useNavigate } from 'react-router-dom';
 
 const SmallFooter = () => {
     const { activeLanguage } = useGlobalContext();
+    const navigate = useNavigate();
+    const handleCatalogue = () => {
+        navigate('/catalogue')
+    }
     return (
         <>
             <footer>
@@ -47,9 +52,9 @@ const SmallFooter = () => {
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
-                                <p>Simple</p>
-                                <p>Humble</p>
-                                <p>Elegant</p>
+                                <p onClick={handleCatalogue}>Simple</p>
+                                <p onClick={handleCatalogue}>Humble</p>
+                                <p onClick={handleCatalogue}>Elegant</p>
                             </div>
                         </div>
                     </div>

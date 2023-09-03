@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
-import { useSelector } from 'react-redux';
+import { language } from '../Functions/language';
 
 const SmallSearchNavbar = () => {
 
@@ -44,7 +44,7 @@ const SmallSearchNavbar = () => {
                         <p className='no-active'>Home</p>
                     </Link>
                     <div className='catalogue-dot'>
-                        <p className='active'>Search</p>
+                        <p className='active'>{language(activeLanguage).search}</p>
                         <div className='dot'></div>
                     </div>
                 </div>

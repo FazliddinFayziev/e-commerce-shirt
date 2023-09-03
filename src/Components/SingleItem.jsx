@@ -9,12 +9,13 @@ import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { FcNext } from "react-icons/fc";
 import { useGlobalContext } from '../Context/context';
 import { formatPrice } from '../Functions/functions';
+import { language } from '../Functions/language';
 
 // Main function
 
 const SingleItem = ({ item }) => {
 
-    const { setShow, setCartMessage } = useGlobalContext();
+    const { setShow, setCartMessage, activeLanguage } = useGlobalContext();
 
     const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ const SingleItem = ({ item }) => {
     // removeItemFromCart
     const revomeItemFromCart = (itemId) => {
         dispatch(removeFromCart({ itemId }));
-        setCartMessage({ type: 'info', msg: 'Product is deleted successfully' })
+        setCartMessage({ type: 'info', msg: `${language(activeLanguage).deleted}` })
         setShow(true)
     }
 
@@ -66,7 +67,7 @@ const SingleItem = ({ item }) => {
                     {/* Quantity Information */}
 
                     <div className='quantity'>
-                        <p className='quantity-title'>Quantity:</p>
+                        <p className='quantity-title'>{language(activeLanguage).quantity}:</p>
                         <div className='product-card-buttons'>
                             <button onClick={() => decreaseItemQuantity(item.id)}>
                                 <AiOutlineMinus fontSize={20} />
@@ -81,7 +82,7 @@ const SingleItem = ({ item }) => {
                     {/* Size Information */}
 
                     <div className='product-card-size'>
-                        <p className='size-title'>Size:</p>
+                        <p className='size-title'>{language(activeLanguage).size}:</p>
                         <div className='size-card'>
                             <select name="" id="">
                                 {item.size && item.size.length > 0 && item.size.map((single_size, index) => {
@@ -96,7 +97,7 @@ const SingleItem = ({ item }) => {
                     {/* Narxlar */}
 
                     <div className='price-cart'>
-                        <p className='price-title'>Price:</p>
+                        <p className='price-title'>{language(activeLanguage).price}:</p>
                         <h3>{formatPrice(item.price)} UZS</h3>
                     </div>
 

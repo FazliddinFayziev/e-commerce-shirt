@@ -45,7 +45,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
     const buyNowProduct = () => {
         const newItem = { id: productId, image: images[0], name, category, description: descLanguage(), quantity: count, size, price };
         dispatch(addToCart(newItem));
-        setCartMessage({ type: 'success', msg: 'Product is added successfully' })
+        setCartMessage({ type: 'success', msg: `${language(activeLanguage).product_added}` })
         setShow(true)
         navigate('/cartItem')
     };
@@ -54,7 +54,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
     const addItemToCart = () => {
         const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
         dispatch(addToCart(newItem));
-        setCartMessage({ type: 'success', msg: 'Product is added successfully' })
+        setCartMessage({ type: 'success', msg: `${language(activeLanguage).product_added}` })
         setShow(true)
     };
 
@@ -92,7 +92,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                         <div className='long-line'></div>
                     </div>
                     <div className='dot-container'>
-                        <p>product</p>
+                        <p>{language(activeLanguage).product}</p>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                         </div>
 
                         <div className='part-two-container'>
-                            <p className='part-two-description'>Description:</p>
+                            <p className='part-two-description'>{language(activeLanguage).description}</p>
                             <p className='part-two-text'>{descLanguage()}</p>
                         </div>
 
@@ -194,7 +194,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                                 <div className='gray-line-of-product'></div>
                             </div>
                             <div className='dot-main-container'>
-                                <p>product</p>
+                                <p>{language(activeLanguage).product}</p>
                             </div>
                         </div>
                     </div>

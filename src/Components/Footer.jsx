@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { language } from '../Functions/language';
 import { useGlobalContext } from '../Context/context';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
 
     const { activeLanguage } = useGlobalContext();
+    const navigate = useNavigate();
 
     // MAIN FUNCTION OF FOOTER
 
@@ -18,6 +20,10 @@ const Footer = () => {
             });
         });
     }, [])
+
+    const handleCatalogue = () => {
+        navigate('/catalogue')
+    }
 
     // MAIN
 
@@ -65,9 +71,9 @@ const Footer = () => {
                         <div className='last-line'></div>
                         <div className='ul-box'>
                             <div>
-                                <p>Simple</p>
-                                <p>Humble</p>
-                                <p>Elegant</p>
+                                <p onClick={handleCatalogue}>Simple</p>
+                                <p onClick={handleCatalogue}>Humble</p>
+                                <p onClick={handleCatalogue}>Elegant</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +95,6 @@ const Footer = () => {
                                 <a href='#blog'>
                                     <p>{language(activeLanguage).simple_blog}</p>
                                 </a>
-
                             </div>
                         </div>
                     </div>

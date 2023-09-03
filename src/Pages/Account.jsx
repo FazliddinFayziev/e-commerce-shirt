@@ -5,71 +5,12 @@ import '../Style/account.css';
 import { AccountNavbar, SmallFooter } from '../Components';
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { formatPrice } from '../Functions/functions';
-
-const orders = [
-    {
-        cardItems: [
-            {
-                name: "Javascript T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685875052/yellow-small_gom0xq.jpg",
-                price: 200000,
-                quantity: 2
-            },
-            {
-                name: "React T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685871121/react-small_gvqick.jpg",
-                price: 200000,
-                quantity: 2
-            },
-            {
-                name: "React T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685871121/react-small_gvqick.jpg",
-                price: 200000,
-                quantity: 2
-            },
-        ],
-        totalPrice: 400,
-        userInfo: {
-            userName: "Fazliddin",
-            phoneNumber: "990194515",
-            avenue: "Toshkent",
-            address: "Sergeli-7 Ibrat Mahalla"
-        },
-        order: true
-    },
-    {
-        cardItems: [
-            {
-                name: "Javascript T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685875052/yellow-small_gom0xq.jpg",
-                price: 200000,
-                quantity: 2
-            },
-            {
-                name: "React T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685871121/react-small_gvqick.jpg",
-                price: 200000,
-                quantity: 2
-            },
-            {
-                name: "React T-Shirt",
-                image: "https://res.cloudinary.com/djijmzccq/image/upload/v1685871121/react-small_gvqick.jpg",
-                price: 200000,
-                quantity: 2
-            },
-        ],
-        totalPrice: 400,
-        userInfo: {
-            userName: "Fazliddin",
-            phoneNumber: "990194515",
-            avenue: "Toshkent",
-            address: "Sergeli-7 Ibrat Mahalla"
-        },
-        order: false
-    }
-]
+import { language } from '../Functions/language';
+import { useGlobalContext } from '../Context/context';
 
 const Account = () => {
+
+    const { activeLanguage } = useGlobalContext();
 
     const [openIndex, setOpenIndex] = useState(null);
     const [allOrders, setAllOrders] = useState([]);
@@ -87,7 +28,7 @@ const Account = () => {
         <>
             <AccountNavbar />
             <div className='orders__main__title'>
-                <h3>All Your Orders</h3>
+                <h3>{language(activeLanguage).all_orders}</h3>
             </div>
             <div className="orders-container">
                 {allOrders.length > 0 ? (
@@ -95,7 +36,7 @@ const Account = () => {
                         <div className="order-item" key={index}>
                             <div className='closed__orders'>
                                 <AiOutlineShoppingCart color='#3078ff' fontSize={20} />
-                                <p>Order - {index + 1}</p>
+                                <p>{language(activeLanguage).order} - {index + 1}</p>
                                 <p className='order__time'>{order.orderTime}</p>
                                 <FcNext
                                     onClick={() => handleOpen(index)}
@@ -105,7 +46,7 @@ const Account = () => {
                             </div>
                             {openIndex === index && (
                                 <div className='open__orders'>
-                                    <p className='order__item__title'> • Products</p>
+                                    <p className='order__item__title'> • {language(activeLanguage).products}</p>
                                     <div className="order-summary">
                                         <div className="order-products">
                                             {order.cartItems.map((item, itemIndex) => (
@@ -114,23 +55,23 @@ const Account = () => {
                                                     <p>{item.name}</p>
                                                     <p>{formatPrice(item.price)} UZS</p>
                                                     <p>{item.category}</p>
-                                                    <p>Quantity: {item.quantity}</p>
+                                                    <p>{language(activeLanguage).quantity}: {item.quantity}</p>
                                                 </div>
                                             ))}
                                         </div>
                                         <div className="total-price-container">
                                             <div className="total-price">
-                                                <p>Total Price: <span>{formatPrice(order.totalPrice)} UZS</span></p>
+                                                <p>{language(activeLanguage).total}: <span>{formatPrice(order.totalPrice)} UZS</span></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='order__item__title'> • User Info</p>
+                                    <p className='order__item__title'> • {language(activeLanguage).shipping}</p>
                                     <div className="order-details">
-                                        <p className='order__details__info'>Name:</p>
+                                        <p className='order__details__info'>{language(activeLanguage).name}:</p>
                                         <p>{order.userInfo.userName}</p>
-                                        <p className='order__details__info'>Phone Number:</p>
+                                        <p className='order__details__info'>{language(activeLanguage).number}:</p>
                                         <p>{order.userInfo.phoneNumber}</p>
-                                        <p className='order__details__info'>Address:</p>
+                                        <p className='order__details__info'>{language(activeLanguage).address}:</p>
                                         <p>{order.userInfo.avenue}</p>
                                         <p>{order.userInfo.address}</p>
                                     </div>
@@ -144,7 +85,7 @@ const Account = () => {
                             <div className='no__product__account__icon'>
                                 <MdProductionQuantityLimits fontSize={40} />
                             </div>
-                            <h3>No Product Yet</h3>
+                            <h3>{language(activeLanguage).no_yet}</h3>
                         </div>
                     </div>
                 )}

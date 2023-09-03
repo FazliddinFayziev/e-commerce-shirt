@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { AiOutlineClose } from "react-icons/ai";
 import { useGlobalContext } from '../Context/context';
 import { useNavigate } from 'react-router-dom';
+import { language } from '../Functions/language';
 
 const Cover = () => {
 
     // Global
 
-    const { nav, setNav, languages, changeLanguage } = useGlobalContext();
+    const { nav, setNav, languages, changeLanguage, activeLanguage } = useGlobalContext();
     const navigate = useNavigate();
 
     // Local
@@ -44,11 +45,11 @@ const Cover = () => {
     return (
         <div className={`cover-subject ${!nav ? 'close' : ''}`}>
             <AiOutlineClose onClick={() => setNav(false)} className='close-btn' fontSize={30} />
-            <h3 className='menu-text'>Menu</h3>
+            <h3 className='menu-text'>{language(activeLanguage).menu}</h3>
             <div className='nav-container'>
 
                 <div className='nav-item'>
-                    <p className='nav-text'>Categories:</p>
+                    <p className='nav-text'>{language(activeLanguage).categories}</p>
                     <div className='nav-small-text'>
                         <p onClick={handleCatalogue}>Simple</p>
                         <p onClick={handleCatalogue}>Humble</p>
@@ -57,22 +58,22 @@ const Cover = () => {
                 </div>
 
                 <div className='nav-item'>
-                    <p className='nav-text'>Content:</p>
+                    <p className='nav-text'>{language(activeLanguage).content}</p>
                     <div className='nav-small-text'>
                         <a onClick={() => setNav(false)} href="#home">
                             <p>Home</p>
                         </a>
                         <a onClick={() => setNav(false)} href="#popular">
-                            <p>Popular</p>
+                            <p>{language(activeLanguage).simple_popular}</p>
                         </a>
                         <a onClick={() => setNav(false)} href="#blog">
-                            <p>Blog</p>
+                            <p>{language(activeLanguage).simple_blog}</p>
                         </a>
                     </div>
                 </div>
 
                 <div className='nav-item'>
-                    <p className='nav-text'>Social:</p>
+                    <p className='nav-text'>{language(activeLanguage).social}</p>
                     <div className='nav-small-text'>
                         <p>Instagram</p>
                         <p>Telegram</p>
@@ -81,7 +82,7 @@ const Cover = () => {
                 </div>
 
                 <div className='nav-item'>
-                    <p className='nav-text'>Language:</p>
+                    <p className='nav-text'>{language(activeLanguage).choose_language}</p>
                     <div className='nav-small-text'>
                         <p onClick={() => { changeLanguage(languages[0]); setNav(false) }}>
                             English</p>

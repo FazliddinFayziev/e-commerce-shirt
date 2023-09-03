@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeAllFromCart } from '../Container/cartSlice';
 import axios from '../api/axios';
 import { formatPrice } from '../Functions/functions';
-import { language } from '../Functions/language';
+import { districtNames, language } from '../Functions/language';
 
 
 const ShippingInfo = () => {
@@ -170,19 +170,12 @@ const ShippingInfo = () => {
                         <div className='shipping__input'>
                             <label htmlFor="">{language(activeLanguage).district}</label>
                             <select onChange={(e) => setDistrict(e.target.value)} name="" id="">
-                                <option value="">Choose</option>
-                                <option value="Uchtepa">Uchtepa</option>
-                                <option value="Bektemir">Bektemir</option>
-                                <option value="Mirzo-Ulugbek">Mirzo-Ulugbek</option>
-                                <option value="Mirabad">Mirabad</option>
-                                <option value="Sergeli">Sergeli</option>
-                                <option value="Almazar">Almazar</option>
-                                <option value="Chilanzar">Chilanzar</option>
-                                <option value="Shaikhontohur">Shaikhontohur</option>
-                                <option value="Yunusabad">Yunusabad</option>
-                                <option value="Yakkasaray">Yakkasaray</option>
-                                <option value="Yashnabad">Yashnabad</option>
-                                <option value="Yangihayot">Yangihayot</option>
+                                <option value="">{language(activeLanguage).choose}</option>
+                                {districtNames(activeLanguage).map((single_district, index) => {
+                                    return (
+                                        <option key={index} value={single_district}>{single_district}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                         <div className='shipping__input'>

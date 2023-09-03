@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../Context/context';
+import { language } from '../Functions/language';
 
 const AccountNavbar = () => {
 
@@ -47,13 +48,13 @@ const AccountNavbar = () => {
                         <p className='no-active'>Home</p>
                     </Link>
                     <div className='catalogue-dot'>
-                        <p className='active'>Account</p>
+                        <p className='active'>{language(activeLanguage).order}</p>
                         <div className='dot'></div>
                     </div>
                 </div>
 
                 <div className='catalogue-two'>
-                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>{allOrders.length}</span> Orders</p>
+                    <p style={{ fontWeight: 500 }}><span style={{ color: '#7FC0FC', fontWeight: 800 }}>{allOrders.length}</span> {language(activeLanguage).account}</p>
                 </div>
 
             </div>
