@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Home, Error, Catalogue, Product, Account, Search } from "./Pages";
-import { Routes, Route, useLocation, Link } from "react-router-dom";
+import { Home, Error, Catalogue, Product, Account, Search, QRcode } from "./Pages";
+import { Routes, Route, useLocation, Link, useParams } from "react-router-dom";
 import { AlertCart, CartItems, ShippingInfo, Success } from "./Components";
 import { useGlobalContext } from "./Context/context";
 import { GiShoppingBag } from "react-icons/gi";
@@ -50,6 +50,7 @@ function App() {
         <Route path="/*" element={<Home />} />
         <Route path="/catalogue" element={<Catalogue />} />
         <Route path="/catalogue/:productId" element={<Product />} />
+        <Route path="/qrcode/:codeId" element={<QRcode />} />
         <Route path="/account" element={<Account />} />
         <Route path="/success" element={<Success />} />
         <Route path="/search" element={<Search />} />
@@ -58,10 +59,10 @@ function App() {
       </Routes>
 
       {/* Fixed Card to open CardItems card */}
-
       <Link to={"/cartItem"} className='fixed-card'>
         <GiShoppingBag fontSize={35} />
       </Link>
+
 
     </>
   );

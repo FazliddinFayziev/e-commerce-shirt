@@ -10,6 +10,7 @@ import "../Style/product.css";
 // Components
 
 import { LikeProducts, ProductInfo, SmallFooter, SmallNavbar } from '../Components';
+import Error from './Error';
 import { fetchProducts } from '../Container/productSlice';
 import { useParams } from 'react-router-dom';
 import { fetchSingleProduct } from '../Container/singleProductSlice';
@@ -26,7 +27,7 @@ const Product = () => {
     const [likeProduct, setLikeProduct] = useState([]);
 
     // redux related
-    const { single_loading, singleProduct } = useSelector((state) => state.singleProduct);
+    const { single_loading, singleProduct, error } = useSelector((state) => state.singleProduct);
     const { category } = singleProduct;
     const { products } = useSelector((state) => state.products);
 
@@ -50,8 +51,14 @@ const Product = () => {
     return (
         <>
             <SmallNavbar />
-            <ProductInfo singleProduct={singleProduct} single_loading={single_loading} />
-            {!single_loading && <LikeProducts likeProduct={likeProduct} />}
+            {error ? (
+                <Error />
+            ) : (
+                <>
+                    <ProductInfo singleProduct={singleProduct} single_loading={single_loading} />
+                    {!single_loading && <LikeProducts likeProduct={likeProduct} />}
+                </>
+            )}
             <SmallFooter />
         </>
     )

@@ -9,7 +9,7 @@
     "@mui/styled-engine-sc": "^5.14.6",
     "@reduxjs/toolkit": "^1.9.5",
     "aos": "^2.3.4",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "canvas-confetti": "^1.6.0",
     "cra-template": "1.2.0",
     "gsap": "^3.12.2",
