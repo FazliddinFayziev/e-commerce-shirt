@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'http://localhost:3000/api/v1';
+const BASE_URL = 'https://hello-world-h2mq.onrender.com/api/v1';
 
 // OLD URL:
 
