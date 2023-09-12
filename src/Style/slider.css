@@ -112,11 +112,9 @@
 }
 
 .shop-now-button button {
-    width: 100px;
-    height: 30px;
+    padding: 10px 10px;
     border: inset 1px #000;
     background-color: #fff;
-    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.5s ease-in;
@@ -230,11 +228,8 @@
     }
 
     .shop-now-button button {
-        width: 70px;
-        height: 20px;
         border: inset 1px #000;
         background-color: #fff;
-        font-size: 10px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.5s ease-in;

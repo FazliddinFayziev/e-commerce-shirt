@@ -51,12 +51,10 @@
 }
 
 .button button {
-    width: 150px;
-    height: 40px;
+    padding: 10px 50px;
     background-color: #fff;
     border: inset 1px #000;
     cursor: pointer;
-    padding: 10px;
     font-size: 15px;
     font-weight: 500;
     transition: all 0.5s ease-in;
