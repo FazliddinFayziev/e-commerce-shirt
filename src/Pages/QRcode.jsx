@@ -22,7 +22,6 @@ const QRcode = () => {
 
     useEffect(() => {
         dispatch(fetchSingleQRCode(codeId))
-        console.log(singleQRCode)
     }, [codeId])
 
     if (loading) {
@@ -63,6 +62,12 @@ const QRcode = () => {
                     <div className='user__main__page__containers'>
                         <div className='white__background'></div>
                         <div className='blue__background'></div>
+
+                        <div className='bg__needed__boubles_one'></div>
+                        <div className='bg__needed__boubles_two'></div>
+                        <div className='bg__needed__boubles_three'></div>
+                        <div className='bg__needed__boubles_four'></div>
+
                         <div className='center__text__div'>
 
                             <h2 data-aos="fade-up" data-aos-easing="linear"

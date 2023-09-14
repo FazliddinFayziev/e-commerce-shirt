@@ -59,7 +59,7 @@
 }
 
 .white__background {
-    width: 70%;
+    width: 50%;
     height: 100vh;
     background-color: #fff;
     display: flex;
@@ -67,15 +67,60 @@
     align-items: center;
 }
 
+.bg__needed__boubles_one {
+    position: absolute;
+    z-index: 0;
+    width: 100px;
+    height: 100px;
+    left: 20%;
+    top: 2%;
+    background: rgb(202, 231, 255);
+    background: linear-gradient(191deg, rgba(202, 231, 255, 1) 0%, rgba(210, 255, 219, 1) 0%, rgba(208, 247, 255, 1) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.bg__needed__boubles_two {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    top: 60%;
+    background: rgb(202, 231, 255);
+    background: linear-gradient(191deg, rgba(202, 231, 255, 1) 0%, rgba(210, 255, 219, 1) 0%, rgba(208, 247, 255, 1) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.bg__needed__boubles_three {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 60%;
+    top: 80%;
+    background: rgb(202, 231, 255);
+    background: linear-gradient(191deg, rgba(202, 231, 255, 1) 0%, rgba(210, 255, 219, 1) 0%, rgba(208, 247, 255, 1) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.bg__needed__boubles_four {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 10%;
+    top: 20%;
+    background: rgb(202, 231, 255);
+    background: linear-gradient(191deg, rgba(202, 231, 255, 1) 0%, rgba(210, 255, 219, 1) 0%, rgba(208, 247, 255, 1) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
 .blue__background {
     width: 50%;
     height: 100vh;
-    background-color: #b3daff;
+    background-color: #ecffff;
 }
 
 .center__text__div {
     position: absolute;
-    z-index: 15;
+    z-index: 50;
 }
 
 .follow__me__social__icons {
@@ -83,14 +128,13 @@
     justify-content: center;
     grid-gap: 1rem;
     cursor: pointer;
-    color: #00366d;
-    font-size: 40px;
+    font-size: 60px;
 }
 
 .follow__me__social__icons__single {
     margin: 10px auto;
     text-decoration: none;
-    color: #00366d;
+    color: var(--blue);
 }
 
 .center__text {
@@ -107,7 +151,7 @@
 
 @media (max-width: 768px) {
     .follow__me__social__icons {
-        font-size: 30px;
+        font-size: 50px;
     }
 
     .center__text {
