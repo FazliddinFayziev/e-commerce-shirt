@@ -1,4 +1,4 @@
-// SingleProduct.js (or any other appropriate file)
+// SingleProduct.js
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axios";

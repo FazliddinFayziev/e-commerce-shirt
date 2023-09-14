@@ -6,6 +6,22 @@
     z-index: 10;
 }
 
+.single__user__error {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.error__page__user {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navbar__qrcode {
     font-size: 20px;
     font-weight: 600;
@@ -73,6 +89,8 @@
 
 .follow__me__social__icons__single {
     margin: 10px auto;
+    text-decoration: none;
+    color: #00366d;
 }
 
 .center__text {

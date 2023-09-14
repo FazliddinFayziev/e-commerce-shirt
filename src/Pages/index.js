@@ -5,3 +5,4 @@ export { default as Search } from "./Search";
 export { default as Product } from "./Product";
 export { default as Account } from "./Account";
 export { default as Catalogue } from "./Catalogue";
+export { default as SingleUserError } from "./SingleUserError";
