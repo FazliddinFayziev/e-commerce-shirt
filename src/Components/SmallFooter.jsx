@@ -2,6 +2,7 @@ import React from 'react'
 import { language } from '../Functions/language'
 import { useGlobalContext } from '../Context/context'
 import { useNavigate } from 'react-router-dom';
+import Input from './Input';
 
 const SmallFooter = () => {
     const { activeLanguage } = useGlobalContext();
@@ -26,20 +27,7 @@ const SmallFooter = () => {
                     <h3>{language(activeLanguage).ask}</h3>
                 </div>
 
-                <div data-aos="fade-up-right" data-aos-easing="linear"
-                    data-aos-duration="1000" className='contact__details__container'>
-                    <p>{language(activeLanguage).question}</p>
-                </div>
-
-                {/* subscribe input */}
-
-                <div data-aos="fade-right" data-aos-easing="linear"
-                    data-aos-duration="1000" className='subscribe-container'>
-                    <div className='subscribe-input'>
-                        <input type="text" placeholder={language(activeLanguage).askPlaceholder} />
-                        <button>{language(activeLanguage).send}</button>
-                    </div>
-                </div>
+                <Input />
 
                 {/* footer // Categories // Content // Social */}
 
