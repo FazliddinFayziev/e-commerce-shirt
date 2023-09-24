@@ -3,6 +3,7 @@ import { BsInstagram } from "react-icons/bs";
 import { data } from "../Data/data";
 import { useGlobalContext } from '../Context/context';
 import { language } from '../Functions/language';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const { activeLanguage } = useGlobalContext();
@@ -40,7 +41,9 @@ const Blog = () => {
             </div>
             <div data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="1000" className='follow-button'>
-                <button>Follow</button>
+                <Link to={'https://www.instagram.com/hw.com.uz/'}>
+                    <button>Follow</button>
+                </Link>
             </div>
         </>
     )

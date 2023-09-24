@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { language } from '../Functions/language'
 import { useGlobalContext } from '../Context/context'
 import axios from '../api/axios';
@@ -17,7 +17,7 @@ const Input = () => {
             await axios.get(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 params: {
                     chat_id: chatId,
-                    text: "Iltimos qilsang, keyin o'chiraman",
+                    text: message,
                 },
             });
             setThank(true)
