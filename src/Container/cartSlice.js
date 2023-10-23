@@ -66,11 +66,19 @@ const cartSlice = createSlice({
             state.cartItems = [];
             state.totalPrice = initialState.totalPrice;
             state.totalNumberOfItems = initialState.totalNumberOfItems;
-        }
+        },
+
+        updateSize: (state, action) => {
+            const { itemId, newChoosenSize } = action.payload;
+            const itemToUpdate = state.cartItems.find(item => item.id === itemId);
+            if (itemToUpdate) {
+                itemToUpdate.choosenSize = newChoosenSize;
+            }
+        },
 
     },
 });
 
-export const { addToCart, removeFromCart, updateQuantity, decreaseQuantity, removeAllFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, decreaseQuantity, removeAllFromCart, updateSize } = cartSlice.actions;
 
 export default cartSlice.reducer

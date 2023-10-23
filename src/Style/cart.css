@@ -283,6 +283,11 @@ body.disable-cart-scroll {
     font-weight: 700;
 }
 
+.size__center__of {
+    margin: 10px;
+    font-weight: 800;
+}
+
 /* MEDIA  */
 
 /* 950 PX ==================> */

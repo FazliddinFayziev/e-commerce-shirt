@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // redux related
 import { useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity, decreaseQuantity } from '../Container/cartSlice';
+import { removeFromCart, updateQuantity, decreaseQuantity, updateSize } from '../Container/cartSlice';
 
 // Icons
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
@@ -16,6 +16,7 @@ import { language } from '../Functions/language';
 const SingleItem = ({ item }) => {
 
     const { setShow, setCartMessage, activeLanguage } = useGlobalContext();
+    const [selectedSize, setSelectedSize] = useState(item.choosenSize);
 
     const dispatch = useDispatch();
 
@@ -35,6 +36,12 @@ const SingleItem = ({ item }) => {
         setCartMessage({ type: 'info', msg: `${language(activeLanguage).deleted}` })
         setShow(true)
     }
+
+    // Handle size selection
+    const handleSizeChange = (newSize) => {
+        setSelectedSize(newSize);
+        dispatch(updateSize({ itemId: item.id, newChoosenSize: newSize })); // Update Redux state
+    };
 
     return (
         <>
@@ -84,13 +91,16 @@ const SingleItem = ({ item }) => {
                     <div className='product-card-size'>
                         <p className='size-title'>{language(activeLanguage).size}:</p>
                         <div className='size-card'>
-                            <select name="" id="">
+                            <select value={selectedSize} onChange={(e) => handleSizeChange(e.target.value)} name="" id="">
                                 {item.size && item.size.length > 0 && item.size.map((single_size, index) => {
                                     return (
-                                        <option key={index} value="">{single_size}</option>
+                                        <option key={index} value={single_size}>{single_size}</option>
                                     )
                                 })}
                             </select>
+                        </div>
+                        <div className='size__center__of'>
+                            {item.choosenSize}
                         </div>
                     </div>
 
@@ -98,7 +108,7 @@ const SingleItem = ({ item }) => {
 
                     <div className='price-cart'>
                         <p className='price-title'>{language(activeLanguage).price}:</p>
-                        <h3>{formatPrice(item.price)} UZS</h3>
+                        <h3>{formatPrice(item.price * item.quantity)} UZS</h3>
                     </div>
 
                 </div>
@@ -124,17 +134,20 @@ const SingleItem = ({ item }) => {
                     <div className='small-cart-title'>
                         <p>{item.name}</p>
                         <div className='small-cart-size'>
-                            <select name="" id="">
+                            <select value={selectedSize} onChange={(e) => handleSizeChange(e.target.value)} name="" id="">
                                 {item.size && item.size.length > 0 && item.size.map((single_size, index) => {
                                     return (
-                                        <option key={index} value="">{single_size}</option>
+                                        <option key={index} value={single_size}>{single_size}</option>
                                     )
                                 })}
                             </select>
                         </div>
+                        <div className='size__center__of'>
+                            {item.choosenSize}
+                        </div>
                         <div>
                             <p className='small-cart-price'>
-                                {formatPrice(item.price)} UZS
+                                {formatPrice(item.price * item.quantity)} UZS
                             </p>
                         </div>
                     </div>
