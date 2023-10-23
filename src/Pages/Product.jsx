@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // redux related imports
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +27,10 @@ const Product = () => {
 
     // Local You may like products
     const [likeProduct, setLikeProduct] = useState([]);
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     // redux related
     const { single_loading, singleProduct, error } = useSelector((state) => state.singleProduct);

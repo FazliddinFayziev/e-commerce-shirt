@@ -33,7 +33,6 @@ const Catalogue = () => {
 
     useEffect(() => {
         dispatch(fetchProducts());
-        console.log(products)
     }, []);
 
     useEffect(() => {

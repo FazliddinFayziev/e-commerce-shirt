@@ -18,14 +18,14 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
 
     // Global
     const { setShow, setCartMessage, activeLanguage } = useGlobalContext();
+    const { category, images, name, desceng, descuz, descru, price, size } = singleProduct;
+    const [currentSize, setCurrentSize] = useState('')
     const dispatch = useDispatch();
 
     const { productId } = useParams();
     const [activeImg, setActiveImg] = useState('');
     const [count, setCount] = useState(1);
 
-
-    const { category, images, name, desceng, descuz, descru, price, size } = singleProduct;
     const descLanguage = () => {
         if (activeLanguage === "Eng") {
             return desceng
@@ -38,12 +38,18 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (size) {
+            setCurrentSize(size[0])
+        }
+    }, [productId, singleProduct])
+
+    useEffect(() => {
         setActiveImg(images && images.length > 0 ? images[0] : '');
     }, [singleProduct]);
 
     // Buy Now Product
     const buyNowProduct = () => {
-        const newItem = { id: productId, image: images[0], name, category, description: descLanguage(), quantity: count, size, price };
+        const newItem = { id: productId, image: images[0], name, category, description: descLanguage(), quantity: count, size, choosenSize: currentSize, price };
         dispatch(addToCart(newItem));
         setCartMessage({ type: 'success', msg: `${language(activeLanguage).product_added}` })
         setShow(true)
@@ -52,7 +58,7 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
 
     // ADD PRODUCT TO CARD
     const addItemToCart = () => {
-        const newItem = { id: productId, image: images[0], name, category, description: desceng, quantity: count, size, price };
+        const newItem = { id: productId, image: images[0], name, category, description: descLanguage(), quantity: count, size, choosenSize: currentSize, price };
         dispatch(addToCart(newItem));
         setCartMessage({ type: 'success', msg: `${language(activeLanguage).product_added}` })
         setShow(true)
@@ -157,10 +163,10 @@ const ProductInfo = ({ singleProduct, single_loading }) => {
                             </div>
 
                             <div className='size'>
-                                <select name="" id="">
+                                <select onChange={(e) => setCurrentSize(e.target.value)} name="" id="">
                                     {size && size.length && size.map((single_size, index) => {
                                         return (
-                                            <option key={index} value="">{single_size}</option>
+                                            <option key={index} value={single_size}>{single_size}</option>
                                         )
                                     })}
 
