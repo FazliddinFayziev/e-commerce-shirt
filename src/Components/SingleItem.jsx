@@ -154,7 +154,7 @@ const SingleItem = ({ item }) => {
 
                     {/* Category */}
 
-                    <div className='category-small-cart-title'>{item.choosenSize}</div>
+                    <div className='category-small-cart-title'>{item.category}</div>
 
 
                     {/* Counting product numbers */}

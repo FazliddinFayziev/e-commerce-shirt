@@ -55,6 +55,7 @@ const Account = () => {
                                                     <p>{item.name}</p>
                                                     <p>{formatPrice(item.price)} UZS</p>
                                                     <p>{item.category}</p>
+                                                    <p style={{ fontWeight: '600' }}>{item.choosenSize}</p>
                                                     <p>{language(activeLanguage).quantity}: {item.quantity}</p>
                                                 </div>
                                             ))}
