@@ -81,22 +81,22 @@ export const elegantPopular = [
 export const data = [
     {
         id: 0,
-        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-05_gzpr5f.jpg"
+        img: "https://res.cloudinary.com/du7cdempm/image/upload/v1698109531/rasm1_pjpgwo.jpg"
     },
     {
         id: 1,
-        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-11-38_fovpql.jpg"
+        img: "https://res.cloudinary.com/du7cdempm/image/upload/v1698109530/rasm2_xjt1oz.jpg"
     },
     {
         id: 2,
-        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-35_oaebhf.jpg"
+        img: "https://res.cloudinary.com/du7cdempm/image/upload/v1698109530/rasm5_ieyxft.jpg"
     },
     {
         id: 3,
-        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-21_hnopuq.jpg"
+        img: "https://res.cloudinary.com/du7cdempm/image/upload/v1698109528/rasm4_eumb9y.jpg"
     },
     {
         id: 4,
-        img: "https://res.cloudinary.com/djijmzccq/image/upload/v1685934907/photo_2023-06-04_20-12-53_j7nxj5.jpg"
+        img: "https://res.cloudinary.com/du7cdempm/image/upload/v1698109513/rasm3_tx2cjt.jpg"
     },
 ]
